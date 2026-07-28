@@ -1,0 +1,3 @@
+D:\SEGMENTASI\Pytorch-UNet-master\.github\workflows\main.yml
+D:\SEGMENTASI\Pytorch-UNet-master\README.md
+D:\SEGMENTASI\Pytorch-UNet-master\requirements.txt

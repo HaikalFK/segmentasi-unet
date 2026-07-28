@@ -1,0 +1,82 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1785214234.9924371,
+    "ast_hash": "d0bc7a2e7a6b3bf49a6670d16bd18e1b",
+    "semantic_hash": "d0bc7a2e7a6b3bf49a6670d16bd18e1b"
+  },
+  "evaluate.py": {
+    "mtime": 1785204778.0288603,
+    "ast_hash": "a090b922756ddb6c70f5e7b8640f9bbd",
+    "semantic_hash": "a090b922756ddb6c70f5e7b8640f9bbd"
+  },
+  "hubconf.py": {
+    "mtime": 1785204778.0373116,
+    "ast_hash": "c3120c61e6ea32492d595e1cfa44170f",
+    "semantic_hash": "c3120c61e6ea32492d595e1cfa44170f"
+  },
+  "predict.py": {
+    "mtime": 1785204778.0441236,
+    "ast_hash": "8e086fbb93eaf950f97bec0adb60dafa",
+    "semantic_hash": "8e086fbb93eaf950f97bec0adb60dafa"
+  },
+  "scripts/download_data.sh": {
+    "mtime": 1785204778.1073332,
+    "ast_hash": "1cb36c0be968c6184667c0bae55e7866",
+    "semantic_hash": "1cb36c0be968c6184667c0bae55e7866"
+  },
+  "train.py": {
+    "mtime": 1785204778.0550828,
+    "ast_hash": "492230b3758792e303321ba1ebcd0697",
+    "semantic_hash": "492230b3758792e303321ba1ebcd0697"
+  },
+  "unet/__init__.py": {
+    "mtime": 1785204778.1185975,
+    "ast_hash": "a80965fe7ba4b2957de67f1773b30029",
+    "semantic_hash": "a80965fe7ba4b2957de67f1773b30029"
+  },
+  "unet/unet_model.py": {
+    "mtime": 1785204778.1242085,
+    "ast_hash": "40a4e1181adf46c4db68b9cf6862cbaa",
+    "semantic_hash": "40a4e1181adf46c4db68b9cf6862cbaa"
+  },
+  "unet/unet_parts.py": {
+    "mtime": 1785204778.1304407,
+    "ast_hash": "4066c7773e7c1812765b16a9283d6f94",
+    "semantic_hash": "4066c7773e7c1812765b16a9283d6f94"
+  },
+  "utils/__init__.py": {
+    "mtime": 1785204778.1388104,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "utils/data_loading.py": {
+    "mtime": 1785204778.145342,
+    "ast_hash": "232019d214f735f026379e29b8fbd481",
+    "semantic_hash": "232019d214f735f026379e29b8fbd481"
+  },
+  "utils/dice_score.py": {
+    "mtime": 1785204778.1515205,
+    "ast_hash": "9fba600e7c73ee21597ce88c152474e1",
+    "semantic_hash": "9fba600e7c73ee21597ce88c152474e1"
+  },
+  "utils/utils.py": {
+    "mtime": 1785204778.1571383,
+    "ast_hash": "239655458605ce350258c2e347e2448b",
+    "semantic_hash": "239655458605ce350258c2e347e2448b"
+  },
+  ".github/workflows/main.yml": {
+    "mtime": 1785204778.0710225,
+    "ast_hash": "d2cffbb2e9853db0855f7a94b7b43d78",
+    "semantic_hash": "d2cffbb2e9853db0855f7a94b7b43d78"
+  },
+  "README.md": {
+    "mtime": 1785204778.021494,
+    "ast_hash": "97494f9d9a542c806a415faaebf1a65d",
+    "semantic_hash": "97494f9d9a542c806a415faaebf1a65d"
+  },
+  "requirements.txt": {
+    "mtime": 1785204778.0484784,
+    "ast_hash": "e3bff5f97662016f0fdaff80faabfe14",
+    "semantic_hash": "e3bff5f97662016f0fdaff80faabfe14"
+  }
+}
