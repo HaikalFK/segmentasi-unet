@@ -13,20 +13,11 @@ Images and masks are renamed so they share the same base name,
 which is required by the UNet training pipeline (BasicDataset).
 """
 
-import os
 import sys
 import shutil
 from pathlib import Path
 
 # ── Configuration ──────────────────────────────────────────────────────────────
-# Redirect cache to D: drive to avoid filling up the system drive (C:)
-# This must be done BEFORE importing kagglehub
-import pathlib
-pathlib.Path.home = lambda: Path('D:/home')
-
-os.environ['TEMP'] = 'D:/tmp'
-os.environ['TMP'] = 'D:/tmp'
-
 # Target directories (relative to project root)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_IMGS_DIR = PROJECT_ROOT / 'data' / 'imgs'
@@ -79,6 +70,28 @@ def download_dataset():
     download_path = _find_dataset_root(download_path)
     print(f'Dataset root: {download_path}')
     return download_path
+
+
+def is_dataset_ready() -> bool:
+    """Check if data/imgs/ and data/masks/ already have a complete matching set.
+
+    Returns True only if both directories contain PNG files and every image
+    has a corresponding mask (i.e. the dataset is already organized).
+    """
+    if not DATA_IMGS_DIR.is_dir() or not DATA_MASKS_DIR.is_dir():
+        return False
+
+    img_stems = {f.stem for f in DATA_IMGS_DIR.glob('*.png')}
+    mask_stems = {f.stem for f in DATA_MASKS_DIR.glob('*.png')}
+
+    if not img_stems or not mask_stems:
+        return False
+
+    # Every image must have a matching mask, and vice versa
+    if img_stems != mask_stems:
+        return False
+
+    return True
 
 
 # ── Step 2: Organize into imgs/ and masks/ ─────────────────────────────────────
@@ -191,6 +204,12 @@ def verify_dataset():
 def main():
     print('Plant Phenotyping Dataset Downloader')
     print('====================================\n')
+
+    # Guard: skip download & organize if data is already complete
+    if is_dataset_ready():
+        print('✓ Dataset sudah lengkap di data/imgs/ dan data/masks/ — tidak perlu download ulang.\n')
+        verify_dataset()
+        return
 
     # Step 1: Download
     download_path = download_dataset()

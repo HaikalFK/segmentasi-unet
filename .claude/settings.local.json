@@ -19,7 +19,9 @@
       "Bash(mkdir -p \"D:/tmp\")",
       "Bash(TEMP=\"D:/tmp\" TMP=\"D:/tmp\" python -m pip install --cache-dir \"D:/pip_cache\" --target \"D:/python_libs\" kaggle)",
       "Bash(python data/download_dataset.py)",
-      "Bash(pwd -W)"
+      "Bash(pwd -W)",
+      "PowerShell(pip install *)",
+      "PowerShell(py *)"
     ]
   }
 }
