@@ -1,4 +1,5 @@
 import argparse
+import copy
 import logging
 import os
 import random
@@ -38,6 +39,8 @@ def train_model(
         momentum: float = 0.999,
         gradient_clipping: float = 1.0,
         mask_values: list = None,
+        early_stop_patience: int = 10,
+        early_stop_delta: float = 0.001,
 ):
     # 1. Create dataset
     try:
@@ -79,6 +82,7 @@ def train_model(
         Device:          {device.type}
         Images scaling:  {img_scale}
         Mixed Precision: {amp}
+        Early stop patience: {early_stop_patience}
     ''')
 
     # 4. Set up the optimizer, the loss, the learning rate scheduler and the loss scaling for AMP
@@ -88,6 +92,11 @@ def train_model(
     grad_scaler = torch.cuda.amp.GradScaler(enabled=amp)
     criterion = nn.CrossEntropyLoss() if model.n_classes > 1 else nn.BCEWithLogitsLoss()
     global_step = 0
+
+    # Early stopping state
+    best_dice = 0.0
+    best_model_state = None
+    epochs_without_improvement = 0
 
     # 5. Begin training
     for epoch in range(1, epochs + 1):
@@ -151,6 +160,20 @@ def train_model(
                         scheduler.step(val_score)
 
                         logging.info('Validation Dice score: {}'.format(val_score))
+
+                        # Early stopping check: track best validation Dice
+                        if val_score > best_dice + early_stop_delta:
+                            best_dice = val_score
+                            best_model_state = copy.deepcopy(model.state_dict())
+                            epochs_without_improvement = 0
+                        else:
+                            epochs_without_improvement += 1
+
+                        if epochs_without_improvement >= early_stop_patience:
+                            logging.info(f'Early stopping triggered after epoch {epoch}. '
+                                         f'Best validation Dice: {best_dice:.4f}')
+                            model.load_state_dict(best_model_state)
+                            return
                         try:
                             experiment.log({
                                 'learning rate': optimizer.param_groups[0]['lr'],
@@ -188,6 +211,10 @@ def get_args():
     parser.add_argument('--amp', action='store_true', default=False, help='Use mixed precision')
     parser.add_argument('--bilinear', action='store_true', default=False, help='Use bilinear upsampling')
     parser.add_argument('--classes', '-c', type=int, default=2, help='Number of classes')
+    parser.add_argument('--early-stop-patience', type=int, default=10,
+                        help='Number of validation checks without Dice improvement before early stopping')
+    parser.add_argument('--early-stop-delta', type=float, default=0.001,
+                        help='Minimum improvement in validation Dice to reset early stopping counter')
 
     return parser.parse_args()
 
@@ -235,6 +262,8 @@ if __name__ == '__main__':
             val_percent=args.val / 100,
             amp=args.amp,
             mask_values=temp_dataset.mask_values,
+            early_stop_patience=args.early_stop_patience,
+            early_stop_delta=args.early_stop_delta,
         )
     except torch.cuda.OutOfMemoryError:
 
@@ -253,4 +282,6 @@ if __name__ == '__main__':
             val_percent=args.val / 100,
             amp=args.amp,
             mask_values=temp_dataset.mask_values,
+            early_stop_patience=args.early_stop_patience,
+            early_stop_delta=args.early_stop_delta,
         )
