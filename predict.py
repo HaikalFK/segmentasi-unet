@@ -92,6 +92,14 @@ if __name__ == '__main__':
     net.to(device=device)
     state_dict = torch.load(args.model, map_location=device)
     mask_values = state_dict.pop('mask_values', [0, 1])
+
+    # Override n_classes based on checkpoint's mask_values for consistency
+    n_classes_from_data = len(mask_values)
+    if n_classes_from_data != args.classes:
+        logging.info(f'Overriding --classes {args.classes} -> {n_classes_from_data} based on checkpoint mask_values')
+        net = UNet(n_channels=3, n_classes=n_classes_from_data, bilinear=args.bilinear)
+        net.to(device=device)
+
     net.load_state_dict(state_dict)
 
     logging.info('Model loaded!')
