@@ -162,11 +162,17 @@ def train_model(
 
                         logging.info('Validation Dice score: {}'.format(val_score))
 
-                        # Early stopping check: track best validation Dice
+                        # Early stopping check: track and save best validation Dice
                         if val_score > best_dice + early_stop_delta:
                             best_dice = val_score
                             best_model_state = copy.deepcopy(model.state_dict())
                             epochs_without_improvement = 0
+                            # Save best model checkpoint
+                            if save_checkpoint:
+                                best_state = best_model_state.copy()
+                                best_state['mask_values'] = dataset.mask_values
+                                torch.save(best_state, str(dir_checkpoint / 'checkpoint_best.pth'))
+                                logging.info(f'New best model saved with Dice: {best_dice:.4f}')
                         else:
                             epochs_without_improvement += 1
 
