@@ -48,16 +48,40 @@ Hasil training akan disimpan ke folder `checkpoints/`. Folder ini dibuat otomati
 
 ## 2️⃣ Konsep Penting: Jumlah Kelas
 
-Dataset ini punya **21 kelas** segmentasi:
+### Apa kata dokumentasi resmi
+
+Dataset ini dipublikasikan memiliki **21 kelas** segmentasi:
 
 | Nilai Piksel | Makna          |
 |-------------|----------------|
 | 0           | Background     |
 | 1–20        | Daun/Label ke-1 s.d. ke-20 |
 
-Berdasarkan hasil scan semua mask, nilai piksel unik yang ditemukan adalah **0 hingga 20**, sehingga `--classes` harus diisi **21**.
+### Fakta dari data nyata
 
-> **⚠️ Jangan lupa:** Argumen `--classes 21` **WAJIB** diberikan setiap menjalankan training, evaluate, maupun predict. Default di kode adalah `2` (untuk dataset Carvana).
+Setelah memindai **semua 347 file mask**, ditemukan **22 nilai piksel unik**:
+
+```
+[0, 1, 2, ..., 20, 27]
+```
+
+Angka **27** adalah **label anomali/artifact** — hanya muncul di **1 file** (`ara2012_plant033.png`, 198 piksel dari total 112.530). Kemungkinan kesalahan anotasi atau noise konversi dari dataset asli.
+
+### Dampak ke training
+
+**Jumlah kelas sekarang dideteksi otomatis dari data** (22 kelas, bukan 21). Model akan memetakan:
+
+| Nilai mask asli | Indeks kelas |
+|----------------|-------------|
+| 0             | 0           |
+| 1             | 1           |
+| ...           | ...         |
+| 20            | 20          |
+| **27**        | **21**      |
+
+> **Argumen `--classes` tetap bisa diberikan** (misal `--classes 21`) untuk kompatibilitas, tetapi kode akan **mengabaikannya** dan memakai hasil deteksi dari data.
+
+Lihat `perubahan_training.md` untuk detail lengkap perubahan dan analisis data.
 
 ---
 

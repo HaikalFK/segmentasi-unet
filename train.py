@@ -37,12 +37,17 @@ def train_model(
         weight_decay: float = 1e-8,
         momentum: float = 0.999,
         gradient_clipping: float = 1.0,
+        mask_values: list = None,
 ):
     # 1. Create dataset
     try:
-        dataset = CarvanaDataset(dir_img, dir_mask, img_scale)
+        dataset = CarvanaDataset(dir_img, dir_mask, img_scale, target_size=(256, 256))
     except (AssertionError, RuntimeError, IndexError):
-        dataset = BasicDataset(dir_img, dir_mask, img_scale)
+        dataset = BasicDataset(dir_img, dir_mask, img_scale, target_size=(256, 256))
+
+    # Override mask_values if pre-computed from data scan (avoids double-scan)
+    if mask_values is not None:
+        dataset.mask_values = mask_values
 
     # 2. Split into train / validation partitions
     n_val = int(len(dataset) * val_percent)
@@ -50,12 +55,15 @@ def train_model(
     train_set, val_set = random_split(dataset, [n_train, n_val], generator=torch.Generator().manual_seed(0))
 
     # 3. Create data loaders
-    loader_args = dict(batch_size=batch_size, num_workers=os.cpu_count(), pin_memory=True)
+    # Use num_workers=0 and pin_memory=False for CPU training
+    num_workers = 0 if device.type == 'cpu' else os.cpu_count()
+    pin_memory = device.type == 'cuda'
+    loader_args = dict(batch_size=batch_size, num_workers=num_workers, pin_memory=pin_memory)
     train_loader = DataLoader(train_set, shuffle=True, **loader_args)
     val_loader = DataLoader(val_set, shuffle=False, drop_last=True, **loader_args)
 
     # (Initialize logging)
-    experiment = wandb.init(project='U-Net', resume='allow', anonymous='must')
+    experiment = wandb.init(project='U-Net', resume='allow', anonymous='must', mode='offline')
     experiment.config.update(
         dict(epochs=epochs, batch_size=batch_size, learning_rate=learning_rate,
              val_percent=val_percent, save_checkpoint=save_checkpoint, img_scale=img_scale, amp=amp)
@@ -191,10 +199,17 @@ if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logging.info(f'Using device {device}')
 
+    # Determine n_classes from the dataset by scanning mask files first.
+    # This handles datasets where the number of classes differs from what
+    # is passed via --classes (e.g. when the mask has extra pixel values).
+    temp_dataset = BasicDataset(dir_img, dir_mask, args.scale, target_size=(256, 256))
+    n_classes = len(temp_dataset.mask_values)
+    logging.info(f'Detected {n_classes} classes from mask files (override --classes {args.classes})')
+
     # Change here to adapt to your data
     # n_channels=3 for RGB images
     # n_classes is the number of probabilities you want to get per pixel
-    model = UNet(n_channels=3, n_classes=args.classes, bilinear=args.bilinear)
+    model = UNet(n_channels=3, n_classes=n_classes, bilinear=args.bilinear)
     model = model.to(memory_format=torch.channels_last)
 
     logging.info(f'Network:\n'
@@ -218,9 +233,11 @@ if __name__ == '__main__':
             device=device,
             img_scale=args.scale,
             val_percent=args.val / 100,
-            amp=args.amp
+            amp=args.amp,
+            mask_values=temp_dataset.mask_values,
         )
     except torch.cuda.OutOfMemoryError:
+
         logging.error('Detected OutOfMemoryError! '
                       'Enabling checkpointing to reduce memory usage, but this slows down training. '
                       'Consider enabling AMP (--amp) for fast and memory efficient training')
@@ -234,5 +251,6 @@ if __name__ == '__main__':
             device=device,
             img_scale=args.scale,
             val_percent=args.val / 100,
-            amp=args.amp
+            amp=args.amp,
+            mask_values=temp_dataset.mask_values,
         )
