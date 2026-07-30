@@ -178,8 +178,12 @@ def train_model(
         dataset, [n_train, n_val], generator=torch.Generator().manual_seed(0)
     )
 
-    num_workers = 0 if device.type == 'cpu' else os.cpu_count()
-    pin_memory = device.type == 'cuda'
+    # Windows safety: force num_workers=0 to avoid DataLoader crashes
+    if os.name == 'nt':
+        num_workers = 0
+    else:
+        num_workers = 0 if device.type == 'cpu' else os.cpu_count()
+    pin_memory = device.type == 'cuda' and num_workers > 0
     loader_args = dict(batch_size=batch_size, num_workers=num_workers, pin_memory=pin_memory)
 
     train_loader = DataLoader(train_set, shuffle=True, **loader_args)
