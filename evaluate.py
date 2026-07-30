@@ -101,7 +101,11 @@ def evaluate(net, dataloader, device, amp):
     avg_iou_per_class = total_iou_per_class / max(num_val_batches, 1) if total_iou_per_class is not None else None
     avg_mean_iou = total_mean_iou / max(num_val_batches, 1) if total_mean_iou > 0 else 0
 
-    return avg_dice, avg_iou_per_class, avg_mean_iou
+    return {
+        'dice': avg_dice,
+        'mean_iou': avg_mean_iou,
+        'iou_per_class': avg_iou_per_class.tolist() if avg_iou_per_class is not None else None,
+    }
 
 
 def get_args():
@@ -169,15 +173,16 @@ if __name__ == '__main__':
     logging.info(f'Validation set size: {n_val}')
 
     # Evaluate
-    dice, iou_per_class, mean_iou = evaluate(net, val_loader, device, args.amp, n_classes)
+    metrics = evaluate(net, val_loader, device, args.amp)
 
     # Print results
     print('\n' + '='*60)
     print('EVALUATION RESULTS')
     print('='*60)
-    print(f'Dice Score (excl. background): {dice:.4f}')
-    print(f'Mean IoU (excl. background):   {mean_iou:.4f}')
+    print(f'Dice Score (excl. background): {metrics["dice"]:.4f}')
+    print(f'Mean IoU (excl. background):   {metrics["mean_iou"]:.4f}')
     print('-'*60)
+    iou_per_class = metrics['iou_per_class']
     if iou_per_class is not None:
         print('IoU per class (excl. background):')
         for i, iou in enumerate(iou_per_class):
