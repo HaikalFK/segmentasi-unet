@@ -21,7 +21,13 @@
       "Bash(python data/download_dataset.py)",
       "Bash(pwd -W)",
       "PowerShell(pip install *)",
-      "PowerShell(py *)"
+      "PowerShell(py *)",
+      "mcp__ide__executeCode",
+      "Read(//content/**)",
+      "Bash(python evaluate.py --load checkpoints/checkpoint_best.pth --classes 21 --scale 0.5)",
+      "PowerShell(Get-Content \"C:\\\\Users\\\\Musa\\\\OneDrive - Universitas Teknologi Yogyakarta \\(1\\)\\\\segementasi\\\\segmentasi-unet\\\\Colab_Training_Orchestrator.ipynb\" | ConvertFrom-Json | Select-Object -ExpandProperty cells | Select-Object -Skip 30 | ForEach-Object { \"Cell ID: \" + $_.id + \" | Type: \" + $_.cell_type + \" | First line: \" + \\($_.source[0] -replace \"`n\",\"\"\\) })",
+      "Bash(python3 *)",
+      "Bash(python *)"
     ]
   }
 }

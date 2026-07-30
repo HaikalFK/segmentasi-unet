@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+import sys
 
 import numpy as np
 import torch
@@ -11,6 +12,7 @@ from torchvision import transforms
 from utils.data_loading import BasicDataset
 from unet import UNet
 from utils.utils import plot_img_and_mask
+
 
 def predict_img(net,
                 full_img,
@@ -42,21 +44,27 @@ def get_args():
     parser.add_argument('--viz', '-v', action='store_true',
                         help='Visualize the images as they are processed')
     parser.add_argument('--no-save', '-n', action='store_true', help='Do not save the output masks')
+    parser.add_argument('--output-dir', '-d', type=str, default='outputs',
+                        help='Directory to save output masks (default: outputs/)')
     parser.add_argument('--mask-threshold', '-t', type=float, default=0.5,
                         help='Minimum probability value to consider a mask pixel white')
     parser.add_argument('--scale', '-s', type=float, default=0.5,
                         help='Scale factor for the input images')
     parser.add_argument('--bilinear', action='store_true', default=False, help='Use bilinear upsampling')
     parser.add_argument('--classes', '-c', type=int, default=2, help='Number of classes')
-    
+
     return parser.parse_args()
 
 
-def get_output_filenames(args):
-    def _generate_name(fn):
-        return f'{os.path.splitext(fn)[0]}_OUT.png'
+def get_output_filenames(args, input_files):
+    """Generate output filenames in the output directory"""
+    os.makedirs(args.output_dir, exist_ok=True)
 
-    return args.output or list(map(_generate_name, args.input))
+    def _generate_name(fn):
+        base = os.path.splitext(os.path.basename(fn))[0]
+        return os.path.join(args.output_dir, f'{base}_OUT.png')
+
+    return args.output or list(map(_generate_name, input_files))
 
 
 def mask_to_image(mask: np.ndarray, mask_values):
@@ -76,12 +84,31 @@ def mask_to_image(mask: np.ndarray, mask_values):
     return Image.fromarray(out)
 
 
+def compute_iou(pred_mask, true_mask, n_classes, ignore_index=0):
+    """Compute IoU for a single prediction"""
+    # Convert to one-hot
+    pred_oh = F.one_hot(torch.from_numpy(pred_mask), n_classes).permute(2, 0, 1).float()
+    true_oh = F.one_hot(torch.from_numpy(true_mask), n_classes).permute(2, 0, 1).float()
+
+    # Exclude background
+    if ignore_index is not None:
+        pred_oh = torch.cat([pred_oh[:ignore_index], pred_oh[ignore_index+1:]], dim=0)
+        true_oh = torch.cat([true_oh[:ignore_index], true_oh[ignore_index+1:]], dim=0)
+        n_classes = n_classes - 1
+
+    intersection = (pred_oh * true_oh).sum(dim=(1, 2))
+    union = pred_oh.sum(dim=(1, 2)) + true_oh.sum(dim=(1, 2)) - intersection
+    iou = intersection / (union + 1e-8)
+
+    return iou, iou.mean()
+
+
 if __name__ == '__main__':
     args = get_args()
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
     in_files = args.input
-    out_files = get_output_filenames(args)
+    out_files = get_output_filenames(args, in_files)
 
     net = UNet(n_channels=3, n_classes=args.classes, bilinear=args.bilinear)
 
@@ -104,6 +131,10 @@ if __name__ == '__main__':
 
     logging.info('Model loaded!')
 
+    # Try to load ground truth masks for IoU computation
+    mask_dir = './data/masks/'
+    has_ground_truth = os.path.exists(mask_dir)
+
     for i, filename in enumerate(in_files):
         logging.info(f'Predicting image {filename} ...')
         img = Image.open(filename)
@@ -114,12 +145,25 @@ if __name__ == '__main__':
                            out_threshold=args.mask_threshold,
                            device=device)
 
+        # Save output mask
         if not args.no_save:
             out_filename = out_files[i]
             result = mask_to_image(mask, mask_values)
             result.save(out_filename)
             logging.info(f'Mask saved to {out_filename}')
 
+        # Compute IoU if ground truth available
+        if has_ground_truth:
+            # Find corresponding mask file
+            base_name = os.path.splitext(os.path.basename(filename))[0]
+            mask_path = os.path.join(mask_dir, base_name + '.png')
+            if os.path.exists(mask_path):
+                true_mask = np.array(Image.open(mask_path))
+                iou_per_class, mean_iou = compute_iou(mask, true_mask, n_classes_from_data)
+                logging.info(f'IoU per class (excl. background): {iou_per_class.numpy()}')
+                logging.info(f'Mean IoU (excl. background): {mean_iou:.4f}')
+
+        # Visualize if requested
         if args.viz:
             logging.info(f'Visualizing results for image {filename}, close to continue...')
             plot_img_and_mask(img, mask)

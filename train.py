@@ -43,10 +43,7 @@ def train_model(
         early_stop_delta: float = 0.001,
 ):
     # 1. Create dataset
-    try:
-        dataset = CarvanaDataset(dir_img, dir_mask, img_scale, target_size=(256, 256))
-    except (AssertionError, RuntimeError, IndexError):
-        dataset = BasicDataset(dir_img, dir_mask, img_scale, target_size=(256, 256))
+    dataset = BasicDataset(dir_img, dir_mask, img_scale, target_size=(256, 256))
 
     # Override mask_values if pre-computed from data scan (avoids double-scan)
     if mask_values is not None:
@@ -161,10 +158,12 @@ def train_model(
                             if not (torch.isinf(value.grad) | torch.isnan(value.grad)).any():
                                 histograms['Gradients/' + tag] = wandb.Histogram(value.grad.data.cpu())
 
-                        val_score = evaluate(model, val_loader, device, amp)
+                        val_metrics = evaluate(model, val_loader, device, amp)
+                        val_score = val_metrics['dice']
                         scheduler.step(val_score)
 
-                        logging.info('Validation Dice score: {}'.format(val_score))
+                        logging.info(f'Validation Dice score: {val_score:.4f}')
+                        logging.info(f'Validation mIoU: {val_metrics["mean_iou"]:.4f}')
 
                         # Early stopping check: track and save best validation Dice
                         if val_score > best_dice + early_stop_delta:
