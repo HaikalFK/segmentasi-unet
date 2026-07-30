@@ -94,6 +94,10 @@ def train_model(
     criterion = nn.CrossEntropyLoss() if model.n_classes > 1 else nn.BCEWithLogitsLoss()
     global_step = 0
 
+    # Ensure checkpoint directory exists before first save
+    if save_checkpoint:
+        Path(dir_checkpoint).mkdir(parents=True, exist_ok=True)
+
     # Early stopping state
     best_dice = 0.0
     best_model_state = None
@@ -198,7 +202,6 @@ def train_model(
                             pass
 
         if save_checkpoint:
-            Path(dir_checkpoint).mkdir(parents=True, exist_ok=True)
             state_dict = model.state_dict()
             state_dict['mask_values'] = dataset.mask_values
             torch.save(state_dict, str(dir_checkpoint / 'checkpoint_epoch{}.pth'.format(epoch)))
