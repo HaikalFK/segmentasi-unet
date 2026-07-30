@@ -22,7 +22,6 @@ import argparse
 import copy
 import logging
 import os
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -76,7 +75,7 @@ class BinaryLeafDataset(Dataset):
 
     @staticmethod
     def _preprocess_img(pil_img, target_size):
-        pil_img = pil_img.resize(target_size, Image.BICUBIC)
+        pil_img = pil_img.resize(target_size, Image.Resampling.BICUBIC)
         arr = np.asarray(pil_img)
         if arr.ndim == 2:
             arr = arr[np.newaxis, ...]
@@ -87,7 +86,7 @@ class BinaryLeafDataset(Dataset):
 
     @staticmethod
     def _preprocess_mask(pil_img, target_size):
-        pil_img = pil_img.resize(target_size, Image.NEAREST)
+        pil_img = pil_img.resize(target_size, Image.Resampling.NEAREST)
         mask = np.asarray(pil_img, dtype=np.int64)
         return (mask > 0).astype(np.int64)          # binary mapping
 
