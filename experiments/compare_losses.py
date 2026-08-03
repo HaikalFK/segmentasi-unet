@@ -97,6 +97,33 @@ def binary_metrics(pred_mask, true_mask, eps=1e-8):
     return iou.item(), dice.item()
 
 
+def _save_sample_grid(img, true_mask, pred_mask, out_path):
+    """Simpan grid input|truth|prediction sebagai PNG (diagnostik D).
+
+    img      : (C, H, W) float [0,1]
+    true_mask: (H, W) long in {0,1}
+    pred_mask: (H, W) long in {0,1}
+    """
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    arr = img.permute(1, 2, 0).numpy()      # (H, W, C) float
+    fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+    axes[0].imshow(arr)
+    axes[0].set_title("Input", fontsize=10)
+    axes[0].axis("off")
+    axes[1].imshow(true_mask.numpy(), cmap="gray")
+    axes[1].set_title("Truth", fontsize=10)
+    axes[1].axis("off")
+    axes[2].imshow(pred_mask.numpy(), cmap="gray")
+    axes[2].set_title("Prediction", fontsize=10)
+    axes[2].axis("off")
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=100, bbox_inches="tight")
+    plt.close()
+
+
 def set_seed(seed: int = 42):
     """Set all random seeds for reproducibility."""
     import random
@@ -183,24 +210,45 @@ def train_one_epoch(
     scaler: GradScaler,
     amp: bool,
     gradient_clip: float,
+    epoch: int = 0,
 ):
-    """Train for one epoch."""
+    """Train for one epoch.
+
+    Diagnostics (poin B & C dari investigasi):
+      - B: mencetak indeks batch + nama sampel ketika loss/grad NaN (skip),
+            untuk menemukan sampel yang rusak.
+      - C: mengecek apakah output model (pred) sudah NaN/Inf SEBELUM menghitung
+            loss, agar bisa membedakan "model divergen" vs "aritmatika loss".
+    """
     model.train()
     epoch_loss = 0.0
     num_batches = 0
+    nan_batch_count = 0
 
-    for batch in loader:
+    for bi, batch in enumerate(loader):
         imgs = batch["image"].to(device, dtype=torch.float32, memory_format=torch.channels_last)
         masks = batch["mask"].to(device, dtype=torch.long)
+        names = batch.get("name")
+        batch_tag = f"bi={bi}"
+        if names is not None:
+            batch_tag += f" names={list(names)}"
 
         optimizer.zero_grad(set_to_none=True)
 
         with autocast(device.type if device.type != "mps" else "cpu", enabled=amp):
             pred = model(imgs)
+            # C: cek pred model sebelum loss
+            if not torch.isfinite(pred).all():
+                n_nonfinite = (~torch.isfinite(pred)).sum().item()
+                print(f"[WARN (C)] pred NON-FINITE at {batch_tag} — {n_nonfinite} elemen.")
+                continue
+
             loss = loss_fn(pred, masks)
 
-        # Skip NaN/Inf loss
+        # Skip NaN/Inf loss — B: cetak indeks batch agar sampel rusak terlihat
         if torch.isnan(loss) or torch.isinf(loss):
+            print(f"[WARN (B)] loss {('NaN' if torch.isnan(loss) else 'Inf')} at {batch_tag} — batch di-skip.")
+            nan_batch_count += 1
             continue
 
         scaler.scale(loss).backward()
@@ -213,9 +261,15 @@ def train_one_epoch(
             scaler.step(optimizer)
             epoch_loss += loss.item()
             num_batches += 1
+        else:
+            # B: batch yang menyebabkan grad NaN juga di-log
+            print(f"[WARN (B)] grad NaN at {batch_tag} — step di-skip.")
+            nan_batch_count += 1
 
         scaler.update()
 
+    if nan_batch_count > 0:
+        print(f"[INFO] Epoch {epoch}: {nan_batch_count} batch di-skip karena NaN/Inf (diagnosis B/C).")
     return epoch_loss / max(num_batches, 1)
 
 
@@ -373,10 +427,11 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
     print("-" * 60)
 
     for epoch in range(1, epochs + 1):
-        # Train
+        # Train (diagnostik: cek pred NaN (C) & cetak batch NaN (B))
         train_loss = train_one_epoch(
             model, train_loader, optimizer, loss_fn, device,
-            scaler, train_cfg["amp"], grad_clip
+            scaler, train_cfg["amp"], grad_clip,
+            epoch=epoch,
         )
 
         # Validate — capture samples only when we'll log them
@@ -397,7 +452,7 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
 
         print(f"Epoch {epoch:3d}/{epochs} | Loss: {train_loss:.4f} | Val Loss: {val_metrics['val_loss']:.4f} | IoU: {val_metrics['val_iou']:.4f} | Dice: {val_metrics['val_dice']:.4f}")
 
-        # W&B logging every log_interval epochs
+        # W&B logging every log_interval epochs + diagnostik D (prediksi per epoch)
         if epoch % log_interval == 0:
             log_data = {
                 "epoch": epoch,
@@ -407,13 +462,24 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
                 "val_dice": val_metrics["val_dice"],
                 "lr": optimizer.param_groups[0]["lr"],
             }
-            # Sample prediction images
+            # Sample prediction images (W&B + disk)
             if log_samples and val_metrics.get("samples"):
+                pred_dir = Path(save_dir) / "predictions" / f"epoch_{epoch:03d}"
+                pred_dir.mkdir(parents=True, exist_ok=True)
                 for si, (img, true, predm) in enumerate(val_metrics["samples"]):
                     log_data[f"sample_{si}/input"] = tracker.image(img)
                     log_data[f"sample_{si}/truth"] = tracker.image(true.unsqueeze(0))
                     log_data[f"sample_{si}/prediction"] = tracker.image(predm.unsqueeze(0))
+                    # Simpan PNG ke disk agar bisa dilihat meski W&B offline/disabled
+                    _save_sample_grid(img, true, predm, pred_dir / f"sample_{si}.png")
             tracker.log(log_data)
+
+        # Diagnostik D: peringatan ketika val IoU/Dice anjlok drastis dibanding epoch sebelumnya
+        if epoch > 1:
+            prev_iou = history["val_iou"][-2]
+            if prev_iou - val_metrics["val_iou"] > 0.3 and prev_iou > 0.5:
+                print(f"[WARN (D)] IoU anjlok drastis: {prev_iou:.4f} → {val_metrics['val_iou']:.4f} "
+                      f"di epoch {epoch}. Cek prediksi di {Path(save_dir) / 'predictions'}.")
 
         # Checkpoint best
         if val_metrics["val_dice"] > best_dice + delta:

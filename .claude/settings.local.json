@@ -36,7 +36,16 @@
       "Bash(\".env/Scripts/python.exe\" -m py_compile utils/loss_functions.py utils/checkpoint.py utils/wandb_tracker.py experiments/compare_losses.py)",
       "Bash(\".env/Scripts/python.exe\" -m py_compile experiments/compare_losses.py utils/loss_functions.py utils/checkpoint.py utils/wandb_tracker.py)",
       "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
-      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check_nb.py)"
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check_nb.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _nbcheck.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _fix_nb.py)",
+      "Bash(\".env/Scripts/python.exe\" -m py_compile experiments/compare_losses.py utils/wandb_tracker.py utils/loss_functions.py)",
+      "Bash(git ls-remote *)",
+      "Bash(PYTHONIOENCODING=utf-8 .env/Scripts/python.exe -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _fix_nb_branch.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check30.py)",
+      "Bash(rm -f _fix_nb_branch.py _check30.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _diag_test.py)"
     ]
   }
 }
