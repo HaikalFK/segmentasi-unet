@@ -1,0 +1,56 @@
+# Weighted BCE + Dice Loss Configuration
+# ======================================
+# Proposed: Inverse-frequency weighted CrossEntropy + Dice Loss
+
+experiment:
+  name: "loss_comparison_weighted_bce_dice"
+  description: "U-Net with Weighted BCE + Dice - proposed method"
+  seed: 42
+
+model:
+  n_channels: 3
+  n_classes: 2
+  bilinear: false
+
+training:
+  epochs: 50
+  batch_size: 8
+  learning_rate: 1e-4
+  optimizer: "RMSprop"
+  weight_decay: 1e-8
+  momentum: 0.999
+  scheduler: "ReduceLROnPlateau"
+  scheduler_patience: 5
+  scheduler_min_lr: 1e-7
+  amp: true
+  early_stop_patience: 10
+  early_stop_delta: 0.001
+  gradient_clip: 1.0
+
+loss:
+  name: "weighted_bce_dice"
+  weight_clamp: [0.3, 3.0]    # clamp for inverse frequency weights
+  dice_weight: 1.0            # multiplier for Dice loss component
+
+data:
+  dataset: "BinaryLeafDataset"
+  img_dir: "data/imgs"
+  mask_dir: "data/masks"
+  scale: 0.5
+  target_size: [256, 256]
+  validation_pct: 10.0
+  num_workers: 0
+  pin_memory: true
+
+wandb:
+  enabled: true            # true = track via wandb, false = skip wandb entirely
+  mode: "offline"          # offline | online | disabled (disabled = no logs saved at all)
+  project: "U-Net-loss-comparison"
+  entity: null             # leave null to use default account
+  group: "bce-vs-weighted-bce-dice"   # runs in same group are compared together
+  log_interval: 1          # log metrics every N epochs
+  log_sample_predictions: true  # log sample images every log_sample_interval
+
+output:
+  save_dir: "results/weighted_bce_dice"
+  save_best_only: true
