@@ -45,7 +45,8 @@
       "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _fix_nb_branch.py)",
       "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check30.py)",
       "Bash(rm -f _fix_nb_branch.py _check30.py)",
-      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _diag_test.py)"
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _diag_test.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _scenarioA_test.py)"
     ]
   }
 }

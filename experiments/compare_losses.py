@@ -211,14 +211,16 @@ def train_one_epoch(
     amp: bool,
     gradient_clip: float,
     epoch: int = 0,
+    diagnostics: bool = False,
 ):
     """Train for one epoch.
 
-    Diagnostics (poin B & C dari investigasi):
-      - B: mencetak indeks batch + nama sampel ketika loss/grad NaN (skip),
-            untuk menemukan sampel yang rusak.
+    Diagnostics (hanya aktif jika `diagnostics=True`):
+      - B: mencetak indeks batch + nama sampel ketika loss/grad NaN (skip).
       - C: mengecek apakah output model (pred) sudah NaN/Inf SEBELUM menghitung
             loss, agar bisa membedakan "model divergen" vs "aritmatika loss".
+    Ketika diagnostics=False, kode fallback ke perilaku asli (skip NaN diam-diam,
+    tanpa print), sehingga output produksi bersih.
     """
     model.train()
     epoch_loss = 0.0
@@ -230,24 +232,25 @@ def train_one_epoch(
         masks = batch["mask"].to(device, dtype=torch.long)
         names = batch.get("name")
         batch_tag = f"bi={bi}"
-        if names is not None:
+        if diagnostics and names is not None:
             batch_tag += f" names={list(names)}"
 
         optimizer.zero_grad(set_to_none=True)
 
         with autocast(device.type if device.type != "mps" else "cpu", enabled=amp):
             pred = model(imgs)
-            # C: cek pred model sebelum loss
-            if not torch.isfinite(pred).all():
+            # C: cek pred model sebelum loss (hanya saat diagnostics aktif)
+            if diagnostics and not torch.isfinite(pred).all():
                 n_nonfinite = (~torch.isfinite(pred)).sum().item()
                 print(f"[WARN (C)] pred NON-FINITE at {batch_tag} — {n_nonfinite} elemen.")
                 continue
 
             loss = loss_fn(pred, masks)
 
-        # Skip NaN/Inf loss — B: cetak indeks batch agar sampel rusak terlihat
+        # Skip NaN/Inf loss (B: cetak indeks batch hanya saat diagnostics aktif)
         if torch.isnan(loss) or torch.isinf(loss):
-            print(f"[WARN (B)] loss {('NaN' if torch.isnan(loss) else 'Inf')} at {batch_tag} — batch di-skip.")
+            if diagnostics:
+                print(f"[WARN (B)] loss {('NaN' if torch.isnan(loss) else 'Inf')} at {batch_tag} — batch di-skip.")
             nan_batch_count += 1
             continue
 
@@ -261,14 +264,14 @@ def train_one_epoch(
             scaler.step(optimizer)
             epoch_loss += loss.item()
             num_batches += 1
-        else:
-            # B: batch yang menyebabkan grad NaN juga di-log
+        elif diagnostics:
+            # B: batch yang menyebabkan grad NaN (hanya saat diagnostics aktif)
             print(f"[WARN (B)] grad NaN at {batch_tag} — step di-skip.")
             nan_batch_count += 1
 
         scaler.update()
 
-    if nan_batch_count > 0:
+    if nan_batch_count > 0 and diagnostics:
         print(f"[INFO] Epoch {epoch}: {nan_batch_count} batch di-skip karena NaN/Inf (diagnosis B/C).")
     return epoch_loss / max(num_batches, 1)
 
@@ -405,6 +408,10 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
     # Training configuration (assigned before tracker.init uses it)
     train_cfg = config["training"]
 
+    # Diagnostik debugging B/C/D (Skenario A): false = output produksi bersih,
+    # true = cetak peringatan NaN + simpan PNG + alarm IoU. Default false.
+    diagnostics = bool(config.get("diagnostics", False))
+
     # W&B tracker (graceful no-op if disabled/missing)
     wandb_cfg = config.get("wandb", {})
     tracker = WandBTracker(wandb_cfg, loss_name=loss_name)
@@ -427,11 +434,12 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
     print("-" * 60)
 
     for epoch in range(1, epochs + 1):
-        # Train (diagnostik: cek pred NaN (C) & cetak batch NaN (B))
+        # Train (diagnostik B/C aktif hanya jika diagnostics=True — Skenario A)
         train_loss = train_one_epoch(
             model, train_loader, optimizer, loss_fn, device,
             scaler, train_cfg["amp"], grad_clip,
             epoch=epoch,
+            diagnostics=diagnostics,
         )
 
         # Validate — capture samples only when we'll log them
@@ -452,7 +460,7 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
 
         print(f"Epoch {epoch:3d}/{epochs} | Loss: {train_loss:.4f} | Val Loss: {val_metrics['val_loss']:.4f} | IoU: {val_metrics['val_iou']:.4f} | Dice: {val_metrics['val_dice']:.4f}")
 
-        # W&B logging every log_interval epochs + diagnostik D (prediksi per epoch)
+        # W&B logging every log_interval epochs (sample images tetap di-log ke W&B)
         if epoch % log_interval == 0:
             log_data = {
                 "epoch": epoch,
@@ -462,20 +470,22 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
                 "val_dice": val_metrics["val_dice"],
                 "lr": optimizer.param_groups[0]["lr"],
             }
-            # Sample prediction images (W&B + disk)
+            # Sample prediction images (W&B). Penyimpanan PNG ke disk (D) hanya saat diagnostics aktif.
             if log_samples and val_metrics.get("samples"):
-                pred_dir = Path(save_dir) / "predictions" / f"epoch_{epoch:03d}"
-                pred_dir.mkdir(parents=True, exist_ok=True)
+                pred_dir = None
+                if diagnostics:
+                    pred_dir = Path(save_dir) / "predictions" / f"epoch_{epoch:03d}"
+                    pred_dir.mkdir(parents=True, exist_ok=True)
                 for si, (img, true, predm) in enumerate(val_metrics["samples"]):
                     log_data[f"sample_{si}/input"] = tracker.image(img)
                     log_data[f"sample_{si}/truth"] = tracker.image(true.unsqueeze(0))
                     log_data[f"sample_{si}/prediction"] = tracker.image(predm.unsqueeze(0))
-                    # Simpan PNG ke disk agar bisa dilihat meski W&B offline/disabled
-                    _save_sample_grid(img, true, predm, pred_dir / f"sample_{si}.png")
+                    if diagnostics and pred_dir is not None:
+                        _save_sample_grid(img, true, predm, pred_dir / f"sample_{si}.png")
             tracker.log(log_data)
 
-        # Diagnostik D: peringatan ketika val IoU/Dice anjlok drastis dibanding epoch sebelumnya
-        if epoch > 1:
+        # Diagnostik D: peringatan ketika val IoU/Dice anjlok drastis (hanya saat diagnostics aktif)
+        if diagnostics and epoch > 1:
             prev_iou = history["val_iou"][-2]
             if prev_iou - val_metrics["val_iou"] > 0.3 and prev_iou > 0.5:
                 print(f"[WARN (D)] IoU anjlok drastis: {prev_iou:.4f} → {val_metrics['val_iou']:.4f} "

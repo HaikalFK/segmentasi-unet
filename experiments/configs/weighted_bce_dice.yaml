@@ -7,6 +7,10 @@ experiment:
   description: "U-Net with Weighted BCE + Dice - proposed method"
   seed: 42
 
+# Diagnostik debugging (B/C/D): true = cetak peringatan NaN, simpan PNG prediksi,
+# alarm IoU anjlok. false = output bersih untuk produksi. Hanya untuk debugging awal.
+diagnostics: false
+
 model:
   n_channels: 3
   n_classes: 2
