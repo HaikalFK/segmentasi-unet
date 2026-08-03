@@ -22,7 +22,9 @@ training:
   scheduler: "ReduceLROnPlateau"
   scheduler_patience: 5
   scheduler_min_lr: 1e-7
-  amp: true
+  # amp disabled: fp16 overflow (logits > 65504) memicu NaN pada weight setelah
+  # model konvergen (~0.95). Matikan AMP → seluruh training fp32, stabil.
+  amp: false
   early_stop_patience: 15
   early_stop_delta: 0.005
   gradient_clip: 1.0
