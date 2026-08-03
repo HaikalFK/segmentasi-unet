@@ -247,9 +247,14 @@ def validate(
 
         with autocast(device.type if device.type != "mps" else "cpu", enabled=amp):
             pred = model(imgs)
-            loss = loss_fn(pred, masks)
 
-        total_loss += loss.item()
+        # Compute val_loss in fp32 (outside autocast) to avoid fp16 overflow → NaN.
+        # This keeps the val_loss column comparable across the two loss functions.
+        loss = loss_fn(pred.float(), masks)
+
+        # Guard against NaN/Inf in val_loss (e.g. model collapse producing extreme logits).
+        if not (torch.isnan(loss) or torch.isinf(loss)):
+            total_loss += loss.item()
 
         pred_bin = pred.argmax(dim=1)
         iou, dice = binary_metrics(pred_bin, masks)
@@ -318,18 +323,25 @@ def run_experiment(config_path: Path, device: torch.device) -> dict:
 
     # Loss function
     loss_cfg = config["loss"]
-    loss_fn = get_loss_fn(loss_cfg["name"])
+    # NB: simpan fungsi asli di nama terpisah (`base_loss_fn`). Jika kita
+    # menyimpan di `loss_fn` lalu menimpanya dengan `wrapped_loss`, closure
+    # `wrapped_loss` akan menangkap `loss_fn` BY REFERENCE yang setelah
+    # assignment menunjuk ke dirinya sendiri → infinite recursion:
+    #   TypeError: wrapped_loss() got an unexpected keyword argument 'weight_clamp'
+    base_loss_fn = get_loss_fn(loss_cfg["name"])
     if loss_cfg["name"] == "weighted_bce_dice":
         # Wrap with parameters
         def wrapped_loss(pred, target):
             clamp = tuple(_num(v) for v in loss_cfg.get("weight_clamp", (0.3, 3.0)))
-            return loss_fn(
+            return base_loss_fn(
                 pred,
                 target,
                 weight_clamp=clamp,
                 dice_weight=_num(loss_cfg.get("dice_weight", 1.0)),
             )
         loss_fn = wrapped_loss
+    else:
+        loss_fn = base_loss_fn
 
     # Checkpoint manager
     output_cfg = config["output"]

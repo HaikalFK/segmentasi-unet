@@ -61,7 +61,8 @@ class WandBTracker:
                 job_type=self.loss_name,
                 mode=self.mode,
                 config=extra_config or {},
-                reinit=True,
+                # finish_previous=True avoids the deprecated `reinit` warning in wandb 0.25+
+                finish_previous=True,
             )
             logger.info("[wandb] run %s started (mode=%s)", self.loss_name, self.mode)
             return self.run
