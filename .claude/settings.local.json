@@ -27,7 +27,26 @@
       "Bash(python evaluate.py --load checkpoints/checkpoint_best.pth --classes 21 --scale 0.5)",
       "PowerShell(Get-Content \"C:\\\\Users\\\\Musa\\\\OneDrive - Universitas Teknologi Yogyakarta \\(1\\)\\\\segementasi\\\\segmentasi-unet\\\\Colab_Training_Orchestrator.ipynb\" | ConvertFrom-Json | Select-Object -ExpandProperty cells | Select-Object -Skip 30 | ForEach-Object { \"Cell ID: \" + $_.id + \" | Type: \" + $_.cell_type + \" | First line: \" + \\($_.source[0] -replace \"`n\",\"\"\\) })",
       "Bash(python3 *)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "PowerShell(cd \"C:\\\\Users\\\\Musa\\\\OneDrive - Universitas Teknologi Yogyakarta \\(1\\)\\\\segementasi\\\\segmentasi-unet\"; python experiments/compare_losses.py --config-dir experiments/configs --output-dir results 2>&1; echo \"EXIT_CODE: $LASTEXITCODE\")",
+      "PowerShell(python -c \"import torch; import numpy as np; print\\('Torch:', torch.__version__\\); print\\('NumPy:', np.__version__\\); print\\('CUDA:', torch.cuda.is_available\\(\\)\\)\")",
+      "PowerShell($env:PYTHONWARNINGS=\"ignore\"; cd \"C:\\\\Users\\\\Musa\\\\OneDrive - Universitas Teknologi Yogyakarta \\(1\\)\\\\segementasi\\\\segmentasi-unet\"; python -c \"import torch; print\\('Torch:', torch.__version__\\); print\\('CUDA:', torch.cuda.is_available\\(\\)\\); x=torch.randn\\(2,3,4,4\\); y=torch.randint\\(0,2,\\(2,4,4\\)\\); print\\('CE:', torch.nn.functional.cross_entropy\\(x,y\\).item\\(\\)\\)\")",
+      "Bash(cmd /c \"cd /d C:\\\\Users\\\\Musa\\\\OneDrive - Universitas Teknologi Yogyakarta \\(1\\)\\\\segementasi\\\\segmentasi-unet && python -c \\\\\"import torch; print\\('Torch:', torch.__version__\\); print\\('CUDA:', torch.cuda.is_available\\(\\)\\)\\\\\"\")",
+      "Bash(\".env/Scripts/python.exe\" -m py_compile experiments/compare_losses.py)",
+      "Bash(\".env/Scripts/python.exe\" -m py_compile utils/loss_functions.py utils/checkpoint.py utils/wandb_tracker.py experiments/compare_losses.py)",
+      "Bash(\".env/Scripts/python.exe\" -m py_compile experiments/compare_losses.py utils/loss_functions.py utils/checkpoint.py utils/wandb_tracker.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check_nb.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _nbcheck.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _fix_nb.py)",
+      "Bash(\".env/Scripts/python.exe\" -m py_compile experiments/compare_losses.py utils/wandb_tracker.py utils/loss_functions.py)",
+      "Bash(git ls-remote *)",
+      "Bash(PYTHONIOENCODING=utf-8 .env/Scripts/python.exe -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _fix_nb_branch.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check30.py)",
+      "Bash(rm -f _fix_nb_branch.py _check30.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _diag_test.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _scenarioA_test.py)"
     ]
   }
 }

@@ -1,0 +1,61 @@
+# Standard BCE Loss Configuration
+# ================================
+# Baseline: plain CrossEntropyLoss without class weighting or Dice component
+
+experiment:
+  name: "loss_comparison_standard_bce"
+  description: "U-Net with Standard BCE (CrossEntropy) - baseline"
+  seed: 42
+
+# Diagnostik debugging (B/C/D): true = cetak peringatan NaN, simpan PNG prediksi,
+# alarm IoU anjlok. false = output bersih untuk produksi. Hanya untuk debugging awal.
+diagnostics: false
+
+model:
+  n_channels: 3
+  n_classes: 2
+  bilinear: false
+
+training:
+  epochs: 100
+  batch_size: 8
+  learning_rate: 1e-5   # LR terbukti stabil di notebook (cell 14) — menghasilkan Dice ~0.96
+  optimizer: "RMSprop"
+  weight_decay: 1e-8
+  momentum: 0.999
+  scheduler: "ReduceLROnPlateau"
+  scheduler_patience: 5
+  scheduler_min_lr: 1e-7
+  # amp disabled: fp16 overflow (logits > 65504) memicu NaN pada weight setelah
+  # model konvergen (~0.95). Matikan AMP → seluruh training fp32, stabil.
+  amp: false
+  early_stop_patience: 15
+  early_stop_delta: 0.005
+  gradient_clip: 1.0
+
+loss:
+  name: "standard_bce"
+  # No additional parameters for standard BCE
+
+data:
+  dataset: "BinaryLeafDataset"  # from Unet_Binary_Leaf_Segmentation.ipynb
+  img_dir: "data/imgs"
+  mask_dir: "data/masks"
+  scale: 0.5
+  target_size: [256, 256]
+  validation_pct: 10.0
+  num_workers: 0  # 0 for Windows, >0 for Linux
+  pin_memory: true
+
+wandb:
+  enabled: true            # true = track via wandb, false = skip wandb entirely
+  mode: "offline"          # offline | online | disabled (disabled = no logs saved at all)
+  project: "U-Net-loss-comparison"
+  entity: null             # leave null to use default account
+  group: "bce-vs-weighted-bce-dice"   # runs in same group are compared together
+  log_interval: 1          # log metrics every N epochs
+  log_sample_predictions: true  # log sample images every log_sample_interval
+
+output:
+  save_dir: "results/standard_bce"
+  save_best_only: true

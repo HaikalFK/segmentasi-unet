@@ -4,22 +4,6 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "training_documentation_ecosystem",
-        "label": "Training Documentation for Plant Phenotyping Dataset",
-        "nodes": [
-          "docs_class_determination_document",
-          "docs_perubahan_training_document",
-          "docs_training_guide_document",
-          "docs_class_determination_plantphenotypingdataset",
-          "docs_class_determination_autoclassdetection",
-          "docs_class_determination_pixelvalue27"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.95,
-        "source_file": "docs/training-guide.md"
-      },
-      {
         "id": "automated_class_detection_flow",
         "label": "Automated Class Detection Data Flow",
         "nodes": [
@@ -46,6 +30,66 @@
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
         "source_file": "docs/perubahan_training.md"
+      },
+      {
+        "id": "training_documentation_ecosystem",
+        "label": "Training Documentation for Plant Phenotyping Dataset",
+        "nodes": [
+          "docs_class_determination_document",
+          "docs_perubahan_training_document",
+          "docs_training_guide_document",
+          "docs_class_determination_plantphenotypingdataset",
+          "docs_class_determination_autoclassdetection",
+          "docs_class_determination_pixelvalue27"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "docs/training-guide.md"
+      },
+      {
+        "id": "unet_building_blocks",
+        "label": "Standard U-Net Building Blocks",
+        "nodes": [
+          "docs_penjelasan_model_une_unet",
+          "docs_penjelasan_model_une_doubleconv",
+          "docs_penjelasan_model_une_down",
+          "docs_penjelasan_model_une_up",
+          "docs_penjelasan_model_une_outconv"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "docs/penjelasan_model_une.md"
+      },
+      {
+        "id": "binary_segmentation_pipeline_flow",
+        "label": "Binary Segmentation + Watershed Pipeline Flow",
+        "nodes": [
+          "docs_binary_segmentation_pipeline_binaryleafdataset",
+          "docs_binary_segmentation_pipeline_unet",
+          "docs_binary_segmentation_pipeline_combined_loss",
+          "docs_binary_segmentation_pipeline_watershed_post_processing"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "docs/binary-segmentation-pipeline.md"
+      },
+      {
+        "id": "weighted_bce_dice_loss_design",
+        "label": "Weighted BCE + Dice Loss Design",
+        "nodes": [
+          "docs_binary_segmentation_pipeline_background_collapse",
+          "docs_binary_segmentation_pipeline_inverse_frequency_weighting",
+          "docs_binary_segmentation_pipeline_combined_loss",
+          "docs_penjelasan_model_une_combined_loss",
+          "docs_penjelasan_model_une_dice_loss"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "docs/binary-segmentation-pipeline.md"
       }
     ]
   },
@@ -57,7 +101,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "enhanced_u_net_init",
-      "community": 11,
+      "community": 10,
       "norm_label": "enhanced-u-net/__init__.py"
     },
     {
@@ -67,8 +111,88 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "enhanced_u_net_enhancedunet_model",
-      "community": 9,
+      "community": 10,
       "norm_label": "enhancedunet_model.py"
+    },
+    {
+      "label": "EnhancedUNet",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_enhancedunet",
+      "community": 10,
+      "norm_label": "enhancedunet"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_enhancedunet_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_enhancedunet_forward",
+      "community": 10,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": ".use_checkpointing()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_enhancedunet_use_checkpointing",
+      "community": 10,
+      "norm_label": ".use_checkpointing()"
+    },
+    {
+      "label": "deep_supervision_loss()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_deep_supervision_loss",
+      "community": 10,
+      "norm_label": "deep_supervision_loss()"
+    },
+    {
+      "label": "Full assembly of the parts to form the complete Enhanced U-Net network  Struktur",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_rationale_1",
+      "community": 10,
+      "norm_label": "full assembly of the parts to form the complete enhanced u-net network  struktur"
+    },
+    {
+      "label": "Aktifkan gradient checkpointing.          CATATAN: versi standar (unet/unet_mode",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_rationale_73",
+      "community": 10,
+      "norm_label": "aktifkan gradient checkpointing.          catatan: versi standar (unet/unet_mode"
+    },
+    {
+      "label": "Hitung loss untuk deep supervision.      outputs : tuple dari EnhancedUNet.forwa",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_model_rationale_86",
+      "community": 10,
+      "norm_label": "hitung loss untuk deep supervision.      outputs : tuple dari enhancedunet.forwa"
     },
     {
       "label": "enhancedunet_parts.py",
@@ -77,8 +201,278 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "enhanced_u_net_enhancedunet_parts",
-      "community": 10,
+      "community": 3,
       "norm_label": "enhancedunet_parts.py"
+    },
+    {
+      "label": "DoubleConv",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "community": 3,
+      "norm_label": "doubleconv"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_doubleconv_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_doubleconv_forward",
+      "community": 3,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": "Down",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_down",
+      "community": 3,
+      "norm_label": "down"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_down_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_down_forward",
+      "community": 3,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": "AttentionGate",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_attentiongate",
+      "community": 3,
+      "norm_label": "attentiongate"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_attentiongate_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_attentiongate_forward",
+      "community": 3,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": "Up",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_up",
+      "community": 3,
+      "norm_label": "up"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_up_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L144",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_up_forward",
+      "community": 3,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": "OutConv",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L164",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_outconv",
+      "community": 3,
+      "norm_label": "outconv"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_outconv_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L170",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_outconv_forward",
+      "community": 3,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": "Parts of the Enhanced U-Net model  Versi ini adalah \"U-Net standar\" (lihat unet/",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_rationale_1",
+      "community": 3,
+      "norm_label": "parts of the enhanced u-net model  versi ini adalah \"u-net standar\" (lihat unet/"
+    },
+    {
+      "label": "(convolution => [BN] => ReLU) * 2  (+ optional residual skip connection)      Sa",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_rationale_20",
+      "community": 3,
+      "norm_label": "(convolution => [bn] => relu) * 2  (+ optional residual skip connection)      sa"
+    },
+    {
+      "label": "Downscaling with maxpool then double conv (+ optional dropout)",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_rationale_53",
+      "community": 3,
+      "norm_label": "downscaling with maxpool then double conv (+ optional dropout)"
+    },
+    {
+      "label": "Attention gate (Oktay et al., 2018) \u2014 dipasang di skip connection.      Mem-filt",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_rationale_67",
+      "community": 3,
+      "norm_label": "attention gate (oktay et al., 2018) \u2014 dipasang di skip connection.      mem-filt"
+    },
+    {
+      "label": "Upscaling then double conv (+ optional attention gate)      Struktur & argumen i",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "enhanced_u_net_enhancedunet_parts_rationale_109",
+      "community": 3,
+      "norm_label": "upscaling then double conv (+ optional attention gate)      struktur & argumen i"
+    },
+    {
+      "label": "test_enhancedunet.py",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet",
+      "community": 7,
+      "norm_label": "test_enhancedunet.py"
+    },
+    {
+      "label": "check()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet_check",
+      "community": 7,
+      "norm_label": "check()"
+    },
+    {
+      "label": "count_params()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet_count_params",
+      "community": 7,
+      "norm_label": "count_params()"
+    },
+    {
+      "label": "combined_loss()",
+      "file_type": "code",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet_combined_loss",
+      "community": 7,
+      "norm_label": "combined_loss()"
+    },
+    {
+      "label": "============================================================  TEST / CEK SETIAP",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet_rationale_1",
+      "community": 7,
+      "norm_label": "============================================================  test / cek setiap"
+    },
+    {
+      "label": "Tampilkan PASS/FAIL untuk satu pengujian.",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet_rationale_44",
+      "community": 7,
+      "norm_label": "tampilkan pass/fail untuk satu pengujian."
+    },
+    {
+      "label": "Salinan loss dari notebook (BCE + Dice).",
+      "file_type": "rationale",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L191",
+      "_origin": "ast",
+      "id": "enhanced_u_net_test_enhancedunet_rationale_191",
+      "community": 7,
+      "norm_label": "salinan loss dari notebook (bce + dice)."
     },
     {
       "label": "download_dataset.py",
@@ -87,7 +481,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "data_download_dataset",
-      "community": 2,
+      "community": 8,
       "norm_label": "download_dataset.py"
     },
     {
@@ -97,7 +491,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "data_download_dataset_find_dataset_root",
-      "community": 2,
+      "community": 8,
       "norm_label": "_find_dataset_root()"
     },
     {
@@ -107,7 +501,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "path",
-      "community": 2,
+      "community": 8,
       "norm_label": "path"
     },
     {
@@ -117,7 +511,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "data_download_dataset_download_dataset",
-      "community": 2,
+      "community": 8,
       "norm_label": "download_dataset()"
     },
     {
@@ -127,7 +521,7 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "data_download_dataset_is_dataset_ready",
-      "community": 2,
+      "community": 8,
       "norm_label": "is_dataset_ready()"
     },
     {
@@ -137,7 +531,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "data_download_dataset_organize_dataset",
-      "community": 2,
+      "community": 8,
       "norm_label": "organize_dataset()"
     },
     {
@@ -147,7 +541,7 @@
       "source_location": "L171",
       "_origin": "ast",
       "id": "data_download_dataset_verify_dataset",
-      "community": 2,
+      "community": 8,
       "norm_label": "verify_dataset()"
     },
     {
@@ -157,7 +551,7 @@
       "source_location": "L204",
       "_origin": "ast",
       "id": "data_download_dataset_main",
-      "community": 2,
+      "community": 8,
       "norm_label": "main()"
     },
     {
@@ -167,7 +561,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "data_download_dataset_rationale_1",
-      "community": 2,
+      "community": 8,
       "norm_label": "download script for plant phenotyping dataset from kaggle.  this script downlo"
     },
     {
@@ -177,7 +571,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "data_download_dataset_rationale_41",
-      "community": 2,
+      "community": 8,
       "norm_label": "find the actual root containing the plant/ subdirectories.      kagglehub wrap"
     },
     {
@@ -187,7 +581,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "data_download_dataset_rationale_53",
-      "community": 2,
+      "community": 8,
       "norm_label": "download dataset from kaggle using kagglehub."
     },
     {
@@ -197,7 +591,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "data_download_dataset_rationale_76",
-      "community": 2,
+      "community": 8,
       "norm_label": "check if data/imgs/ and data/masks/ already have a complete matching set."
     },
     {
@@ -207,7 +601,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "data_download_dataset_rationale_101",
-      "community": 2,
+      "community": 8,
       "norm_label": "copy rgb images to data/imgs/ and label masks to data/masks/.      images and"
     },
     {
@@ -217,7 +611,7 @@
       "source_location": "L172",
       "_origin": "ast",
       "id": "data_download_dataset_rationale_172",
-      "community": 2,
+      "community": 8,
       "norm_label": "verify that images and masks match."
     },
     {
@@ -227,7 +621,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "evaluate",
-      "community": 3,
+      "community": 0,
       "norm_label": "evaluate.py"
     },
     {
@@ -237,7 +631,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "evaluate_iou_score",
-      "community": 3,
+      "community": 0,
       "norm_label": "iou_score()"
     },
     {
@@ -247,7 +641,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "evaluate_evaluate",
-      "community": 3,
+      "community": 0,
       "norm_label": "evaluate()"
     },
     {
@@ -257,7 +651,7 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "evaluate_get_args",
-      "community": 3,
+      "community": 0,
       "norm_label": "get_args()"
     },
     {
@@ -267,7 +661,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "evaluate_rationale_16",
-      "community": 3,
+      "community": 0,
       "norm_label": "compute iou (intersection over union) for each class and mean iou.      args:"
     },
     {
@@ -277,7 +671,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "hubconf",
-      "community": 6,
+      "community": 7,
       "norm_label": "hubconf.py"
     },
     {
@@ -287,7 +681,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "hubconf_unet_carvana",
-      "community": 6,
+      "community": 7,
       "norm_label": "unet_carvana()"
     },
     {
@@ -297,7 +691,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "hubconf_rationale_5",
-      "community": 6,
+      "community": 7,
       "norm_label": "unet model trained on the carvana dataset ( https://www.kaggle.com/c/carvana-ima"
     },
     {
@@ -307,7 +701,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "predict",
-      "community": 5,
+      "community": 9,
       "norm_label": "predict.py"
     },
     {
@@ -317,7 +711,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "predict_predict_img",
-      "community": 4,
+      "community": 0,
       "norm_label": "predict_img()"
     },
     {
@@ -327,7 +721,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "predict_get_args",
-      "community": 5,
+      "community": 9,
       "norm_label": "get_args()"
     },
     {
@@ -337,7 +731,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "predict_get_output_filenames",
-      "community": 5,
+      "community": 9,
       "norm_label": "get_output_filenames()"
     },
     {
@@ -347,7 +741,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "predict_mask_to_image",
-      "community": 5,
+      "community": 9,
       "norm_label": "mask_to_image()"
     },
     {
@@ -357,7 +751,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "ndarray",
-      "community": 5,
+      "community": 9,
       "norm_label": "ndarray"
     },
     {
@@ -367,7 +761,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "predict_compute_iou",
-      "community": 5,
+      "community": 9,
       "norm_label": "compute_iou()"
     },
     {
@@ -377,7 +771,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "predict_rationale_60",
-      "community": 5,
+      "community": 9,
       "norm_label": "generate output filenames in the output directory"
     },
     {
@@ -387,7 +781,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "predict_rationale_88",
-      "community": 5,
+      "community": 9,
       "norm_label": "compute iou for a single prediction"
     },
     {
@@ -401,7 +795,7 @@
       },
       "_origin": "ast",
       "id": "scripts_download_data",
-      "community": 7,
+      "community": 12,
       "norm_label": "download_data.sh"
     },
     {
@@ -415,7 +809,7 @@
       },
       "_origin": "ast",
       "id": "scripts_download_data_sh__entry",
-      "community": 7,
+      "community": 12,
       "norm_label": "download_data.sh script"
     },
     {
@@ -425,7 +819,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "train",
-      "community": 3,
+      "community": 0,
       "norm_label": "train.py"
     },
     {
@@ -435,7 +829,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "train_train_model",
-      "community": 3,
+      "community": 0,
       "norm_label": "train_model()"
     },
     {
@@ -445,8 +839,198 @@
       "source_location": "L210",
       "_origin": "ast",
       "id": "train_get_args",
-      "community": 3,
+      "community": 0,
       "norm_label": "get_args()"
+    },
+    {
+      "label": "train_2class.py",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "train_2class",
+      "community": 4,
+      "norm_label": "train_2class.py"
+    },
+    {
+      "label": "BinaryLeafDataset",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "train_2class_binaryleafdataset",
+      "community": 4,
+      "norm_label": "binaryleafdataset"
+    },
+    {
+      "label": "Dataset",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "train_2class_py_dataset",
+      "community": 4,
+      "norm_label": "dataset"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "train_2class_binaryleafdataset_init",
+      "community": 4,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".__len__()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "train_2class_binaryleafdataset_len",
+      "community": 4,
+      "norm_label": ".__len__()"
+    },
+    {
+      "label": "._preprocess_img()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "train_2class_binaryleafdataset_preprocess_img",
+      "community": 4,
+      "norm_label": "._preprocess_img()"
+    },
+    {
+      "label": "._preprocess_mask()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "train_2class_binaryleafdataset_preprocess_mask",
+      "community": 4,
+      "norm_label": "._preprocess_mask()"
+    },
+    {
+      "label": ".__getitem__()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "train_2class_binaryleafdataset_getitem",
+      "community": 4,
+      "norm_label": ".__getitem__()"
+    },
+    {
+      "label": "combined_loss()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "train_2class_combined_loss",
+      "community": 4,
+      "norm_label": "combined_loss()"
+    },
+    {
+      "label": "Tensor",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "train_2class_py_tensor",
+      "community": 4,
+      "norm_label": "tensor"
+    },
+    {
+      "label": "binary_metrics()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L139",
+      "_origin": "ast",
+      "id": "train_2class_binary_metrics",
+      "community": 4,
+      "norm_label": "binary_metrics()"
+    },
+    {
+      "label": "train_model()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "train_2class_train_model",
+      "community": 4,
+      "norm_label": "train_model()"
+    },
+    {
+      "label": "Module",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "module",
+      "community": 4,
+      "norm_label": "module"
+    },
+    {
+      "label": "device",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "device",
+      "community": 4,
+      "norm_label": "device"
+    },
+    {
+      "label": "get_args()",
+      "file_type": "code",
+      "source_file": "train_2class.py",
+      "source_location": "L332",
+      "_origin": "ast",
+      "id": "train_2class_get_args",
+      "community": 4,
+      "norm_label": "get_args()"
+    },
+    {
+      "label": "train_2class.py \u2014 Binary Leaf Segmentation Training  Train U-Net for binary segm",
+      "file_type": "rationale",
+      "source_file": "train_2class.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "train_2class_rationale_1",
+      "community": 4,
+      "norm_label": "train_2class.py \u2014 binary leaf segmentation training  train u-net for binary segm"
+    },
+    {
+      "label": "Converts multi-class instance masks (pixel values 0..27) to binary masks     on-",
+      "file_type": "rationale",
+      "source_file": "train_2class.py",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "train_2class_rationale_52",
+      "community": 4,
+      "norm_label": "converts multi-class instance masks (pixel values 0..27) to binary masks     on-"
+    },
+    {
+      "label": "Weighted CrossEntropy + Dice loss for imbalanced binary segmentation.      Class",
+      "file_type": "rationale",
+      "source_file": "train_2class.py",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "train_2class_rationale_109",
+      "community": 4,
+      "norm_label": "weighted crossentropy + dice loss for imbalanced binary segmentation.      class"
+    },
+    {
+      "label": "Compute binary IoU and Dice for a batch.      Args:         pred:  (B, H, W) in",
+      "file_type": "rationale",
+      "source_file": "train_2class.py",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "train_2class_rationale_140",
+      "community": 4,
+      "norm_label": "compute binary iou and dice for a batch.      args:         pred:  (b, h, w) in"
     },
     {
       "label": "unet/__init__.py",
@@ -455,7 +1039,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "unet_init",
-      "community": 6,
+      "community": 7,
       "norm_label": "unet/__init__.py"
     },
     {
@@ -465,7 +1049,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "unet_unet_model",
-      "community": 6,
+      "community": 7,
       "norm_label": "unet_model.py"
     },
     {
@@ -475,7 +1059,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "unet_unet_model_unet",
-      "community": 6,
+      "community": 7,
       "norm_label": "unet"
     },
     {
@@ -485,7 +1069,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "unet_unet_model_unet_init",
-      "community": 1,
+      "community": 5,
       "norm_label": ".__init__()"
     },
     {
@@ -495,7 +1079,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "unet_unet_model_unet_forward",
-      "community": 6,
+      "community": 7,
       "norm_label": ".forward()"
     },
     {
@@ -505,7 +1089,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "unet_unet_model_unet_use_checkpointing",
-      "community": 6,
+      "community": 7,
       "norm_label": ".use_checkpointing()"
     },
     {
@@ -515,7 +1099,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "unet_unet_model_rationale_1",
-      "community": 6,
+      "community": 7,
       "norm_label": "full assembly of the parts to form the complete network"
     },
     {
@@ -525,7 +1109,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "unet_unet_parts",
-      "community": 1,
+      "community": 5,
       "norm_label": "unet_parts.py"
     },
     {
@@ -535,7 +1119,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "unet_unet_parts_doubleconv",
-      "community": 1,
+      "community": 5,
       "norm_label": "doubleconv"
     },
     {
@@ -545,7 +1129,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "unet_unet_parts_doubleconv_init",
-      "community": 1,
+      "community": 5,
       "norm_label": ".__init__()"
     },
     {
@@ -555,7 +1139,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "unet_unet_parts_doubleconv_forward",
-      "community": 1,
+      "community": 5,
       "norm_label": ".forward()"
     },
     {
@@ -565,7 +1149,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "unet_unet_parts_down",
-      "community": 1,
+      "community": 5,
       "norm_label": "down"
     },
     {
@@ -575,7 +1159,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "unet_unet_parts_down_init",
-      "community": 1,
+      "community": 5,
       "norm_label": ".__init__()"
     },
     {
@@ -585,7 +1169,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "unet_unet_parts_down_forward",
-      "community": 1,
+      "community": 5,
       "norm_label": ".forward()"
     },
     {
@@ -595,7 +1179,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "unet_unet_parts_up",
-      "community": 1,
+      "community": 5,
       "norm_label": "up"
     },
     {
@@ -605,7 +1189,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "unet_unet_parts_up_init",
-      "community": 1,
+      "community": 5,
       "norm_label": ".__init__()"
     },
     {
@@ -615,7 +1199,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "unet_unet_parts_up_forward",
-      "community": 1,
+      "community": 5,
       "norm_label": ".forward()"
     },
     {
@@ -625,7 +1209,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "unet_unet_parts_outconv",
-      "community": 1,
+      "community": 5,
       "norm_label": "outconv"
     },
     {
@@ -635,7 +1219,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "unet_unet_parts_outconv_init",
-      "community": 1,
+      "community": 5,
       "norm_label": ".__init__()"
     },
     {
@@ -645,7 +1229,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "unet_unet_parts_outconv_forward",
-      "community": 1,
+      "community": 5,
       "norm_label": ".forward()"
     },
     {
@@ -655,7 +1239,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "unet_unet_parts_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "parts of the u-net model"
     },
     {
@@ -665,7 +1249,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "unet_unet_parts_rationale_9",
-      "community": 1,
+      "community": 5,
       "norm_label": "(convolution => [bn] => relu) * 2"
     },
     {
@@ -675,7 +1259,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "unet_unet_parts_rationale_29",
-      "community": 1,
+      "community": 5,
       "norm_label": "downscaling with maxpool then double conv"
     },
     {
@@ -685,7 +1269,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "unet_unet_parts_rationale_43",
-      "community": 1,
+      "community": 5,
       "norm_label": "upscaling then double conv"
     },
     {
@@ -695,7 +1279,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "utils_init",
-      "community": 13,
+      "community": 15,
       "norm_label": "utils/__init__.py"
     },
     {
@@ -705,7 +1289,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "utils_data_loading",
-      "community": 4,
+      "community": 0,
       "norm_label": "data_loading.py"
     },
     {
@@ -715,7 +1299,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "utils_data_loading_load_image",
-      "community": 4,
+      "community": 0,
       "norm_label": "load_image()"
     },
     {
@@ -725,7 +1309,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "utils_data_loading_unique_mask_values",
-      "community": 4,
+      "community": 0,
       "norm_label": "unique_mask_values()"
     },
     {
@@ -735,7 +1319,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "utils_data_loading_basicdataset",
-      "community": 4,
+      "community": 0,
       "norm_label": "basicdataset"
     },
     {
@@ -744,8 +1328,8 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "dataset",
-      "community": 4,
+      "id": "utils_data_loading_py_dataset",
+      "community": 0,
       "norm_label": "dataset"
     },
     {
@@ -755,7 +1339,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "utils_data_loading_basicdataset_init",
-      "community": 4,
+      "community": 0,
       "norm_label": ".__init__()"
     },
     {
@@ -765,7 +1349,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "utils_data_loading_basicdataset_len",
-      "community": 4,
+      "community": 0,
       "norm_label": ".__len__()"
     },
     {
@@ -775,7 +1359,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "utils_data_loading_basicdataset_preprocess",
-      "community": 4,
+      "community": 0,
       "norm_label": ".preprocess()"
     },
     {
@@ -785,7 +1369,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "utils_data_loading_basicdataset_getitem",
-      "community": 4,
+      "community": 0,
       "norm_label": ".__getitem__()"
     },
     {
@@ -795,7 +1379,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "utils_data_loading_carvanadataset",
-      "community": 4,
+      "community": 0,
       "norm_label": "carvanadataset"
     },
     {
@@ -805,7 +1389,7 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "utils_data_loading_carvanadataset_init",
-      "community": 4,
+      "community": 0,
       "norm_label": ".__init__()"
     },
     {
@@ -815,7 +1399,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "utils_dice_score",
-      "community": 3,
+      "community": 0,
       "norm_label": "dice_score.py"
     },
     {
@@ -825,7 +1409,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "utils_dice_score_dice_coeff",
-      "community": 3,
+      "community": 0,
       "norm_label": "dice_coeff()"
     },
     {
@@ -834,8 +1418,8 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "tensor",
-      "community": 3,
+      "id": "utils_dice_score_py_tensor",
+      "community": 0,
       "norm_label": "tensor"
     },
     {
@@ -845,7 +1429,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "utils_dice_score_multiclass_dice_coeff",
-      "community": 3,
+      "community": 0,
       "norm_label": "multiclass_dice_coeff()"
     },
     {
@@ -855,7 +1439,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "utils_dice_score_dice_loss",
-      "community": 3,
+      "community": 0,
       "norm_label": "dice_loss()"
     },
     {
@@ -865,7 +1449,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "utils_utils",
-      "community": 5,
+      "community": 9,
       "norm_label": "utils.py"
     },
     {
@@ -875,7 +1459,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "utils_utils_plot_img_and_mask",
-      "community": 5,
+      "community": 9,
       "norm_label": "plot_img_and_mask()"
     },
     {
@@ -888,7 +1472,7 @@
       "author": null,
       "contributor": null,
       "id": "_github_workflows_main_document",
-      "community": 8,
+      "community": 13,
       "norm_label": "ci/cd docker publish workflow"
     },
     {
@@ -901,60 +1485,8 @@
       "author": null,
       "contributor": null,
       "id": "readme_document",
-      "community": 0,
+      "community": 2,
       "norm_label": "project readme"
-    },
-    {
-      "label": "Class Determination Analysis",
-      "file_type": "document",
-      "source_file": "docs/class-determination.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "docs_class_determination_document",
-      "community": 0,
-      "norm_label": "class determination analysis"
-    },
-    {
-      "label": "Training Changes Log",
-      "file_type": "document",
-      "source_file": "docs/perubahan_training.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "docs_perubahan_training_document",
-      "community": 0,
-      "norm_label": "training changes log"
-    },
-    {
-      "label": "Training Guide",
-      "file_type": "document",
-      "source_file": "docs/training-guide.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "docs_training_guide_document",
-      "community": 0,
-      "norm_label": "training guide"
-    },
-    {
-      "label": "Python Dependencies",
-      "file_type": "document",
-      "source_file": "requirements.txt",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "requirements_document",
-      "community": 12,
-      "norm_label": "python dependencies"
     },
     {
       "label": "U-Net Architecture in PyTorch",
@@ -966,7 +1498,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_unet_architecture",
-      "community": 0,
+      "community": 2,
       "norm_label": "u-net architecture in pytorch"
     },
     {
@@ -979,7 +1511,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_carvana_dataset",
-      "community": 0,
+      "community": 2,
       "norm_label": "carvana image masking challenge dataset"
     },
     {
@@ -992,7 +1524,7 @@
       "author": "Olaf Ronneberger",
       "contributor": "Philipp Fischer, Thomas Brox",
       "id": "readme_unet_paper",
-      "community": 0,
+      "community": 2,
       "norm_label": "u-net: convolutional networks for biomedical image segmentation"
     },
     {
@@ -1005,7 +1537,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_weights_biases",
-      "community": 0,
+      "community": 2,
       "norm_label": "weights and biases integration"
     },
     {
@@ -1018,7 +1550,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_mixed_precision",
-      "community": 0,
+      "community": 2,
       "norm_label": "automatic mixed precision training"
     },
     {
@@ -1031,8 +1563,21 @@
       "author": null,
       "contributor": null,
       "id": "readme_pretrained_model",
-      "community": 0,
+      "community": 2,
       "norm_label": "pretrained model via torch hub"
+    },
+    {
+      "label": "Class Determination Analysis",
+      "file_type": "document",
+      "source_file": "docs/class-determination.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_class_determination_document",
+      "community": 2,
+      "norm_label": "class determination analysis"
     },
     {
       "label": "Automated Class Detection from Mask Files",
@@ -1044,7 +1589,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_class_determination_autoclassdetection",
-      "community": 0,
+      "community": 2,
       "norm_label": "automated class detection from mask files"
     },
     {
@@ -1057,7 +1602,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_class_determination_uniquemaskvalues",
-      "community": 0,
+      "community": 2,
       "norm_label": "unique_mask_values scanning function"
     },
     {
@@ -1070,7 +1615,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_class_determination_maskremapping",
-      "community": 0,
+      "community": 2,
       "norm_label": "mask pixel value remapping for crossentropyloss"
     },
     {
@@ -1083,7 +1628,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_class_determination_pixelvalue27",
-      "community": 0,
+      "community": 2,
       "norm_label": "anomalous pixel value 27 in ara2012_plant033"
     },
     {
@@ -1096,7 +1641,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_class_determination_plantphenotypingdataset",
-      "community": 0,
+      "community": 2,
       "norm_label": "plant phenotyping dataset (347 images, 347 masks)"
     },
     {
@@ -1109,8 +1654,21 @@
       "author": null,
       "contributor": null,
       "id": "docs_class_determination_basicdataset",
-      "community": 0,
+      "community": 2,
       "norm_label": "basicdataset class with automated mask scanning"
+    },
+    {
+      "label": "Training Changes Log",
+      "file_type": "document",
+      "source_file": "docs/perubahan_training.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_perubahan_training_document",
+      "community": 2,
+      "norm_label": "training changes log"
     },
     {
       "label": "WandB Offline Mode Configuration",
@@ -1122,7 +1680,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_perubahan_wandboffline",
-      "community": 0,
+      "community": 2,
       "norm_label": "wandb offline mode configuration"
     },
     {
@@ -1135,7 +1693,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_perubahan_cpusafedataloader",
-      "community": 0,
+      "community": 2,
       "norm_label": "cpu-compatible dataloader configuration"
     },
     {
@@ -1148,7 +1706,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_perubahan_targetsize",
-      "community": 0,
+      "community": 2,
       "norm_label": "uniform target size 256x256 for batch stacking"
     },
     {
@@ -1161,8 +1719,21 @@
       "author": null,
       "contributor": null,
       "id": "docs_perubahan_setuptoolsfix",
-      "community": 0,
+      "community": 2,
       "norm_label": "setuptools compatibility fix for pkg_resources"
+    },
+    {
+      "label": "Training Guide",
+      "file_type": "document",
+      "source_file": "docs/training-guide.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_training_guide_document",
+      "community": 2,
+      "norm_label": "training guide"
     },
     {
       "label": "Combined CrossEntropyLoss and Dice Loss",
@@ -1174,7 +1745,7 @@
       "author": null,
       "contributor": null,
       "id": "docs_training_guide_crossentropydiceloss",
-      "community": 0,
+      "community": 2,
       "norm_label": "combined crossentropyloss and dice loss"
     },
     {
@@ -1187,11 +1758,1201 @@
       "author": null,
       "contributor": null,
       "id": "docs_training_guide_rmsprop",
-      "community": 0,
+      "community": 2,
       "norm_label": "rmsprop optimizer with reducelronplateau scheduler"
+    },
+    {
+      "label": "Python Dependencies",
+      "file_type": "document",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_document",
+      "community": 14,
+      "norm_label": "python dependencies"
+    },
+    {
+      "label": "Binary Leaf Segmentation Pipeline (U-Net)",
+      "file_type": "document",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline",
+      "community": 1,
+      "norm_label": "binary leaf segmentation pipeline (u-net)"
+    },
+    {
+      "label": "Binary U-Net Model (2 classes: background + leaf)",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Instance labels (leaf 1,2,3,...) are not semantically consistent across images, so a standard U-Net cannot learn them as classes; converting to binary foreground-vs-background is what standard U-Net handles well.",
+      "id": "docs_binary_segmentation_pipeline_unet",
+      "community": 1,
+      "norm_label": "binary u-net model (2 classes: background + leaf)"
+    },
+    {
+      "label": "BinaryLeafDataset",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Converts instance masks (0..27) to binary on-the-fly with (mask > 0) so original mask files on disk are never modified; uses NEAREST resize to preserve label integrity.",
+      "id": "docs_binary_segmentation_pipeline_binaryleafdataset",
+      "community": 1,
+      "norm_label": "binaryleafdataset"
+    },
+    {
+      "label": "Weighted BCE + Dice Combined Loss",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "BCE provides pixel-level gradient signal while Dice provides region-level overlap optimization; together they produce smooth, complete leaf masks.",
+      "id": "docs_binary_segmentation_pipeline_combined_loss",
+      "community": 1,
+      "norm_label": "weighted bce + dice combined loss"
+    },
+    {
+      "label": "Background Collapse Problem",
+      "file_type": "rationale",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline_background_collapse",
+      "community": 1,
+      "norm_label": "background collapse problem"
+    },
+    {
+      "label": "Inverse Frequency Class Weighting",
+      "file_type": "rationale",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "With >99% background pixels unweighted BCE learns to predict background everywhere; weight = total/(2*n_class) clamped to [0.3, 3.0] makes misclassifying a leaf pixel cost ~10x more.",
+      "id": "docs_binary_segmentation_pipeline_inverse_frequency_weighting",
+      "community": 1,
+      "norm_label": "inverse frequency class weighting"
+    },
+    {
+      "label": "Two-Stage Approach (Binary Segmentation + Watershed)",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Stage 1 gives pixel-wise background/leaf mask; Stage 2 Watershed separates overlapping leaves into instance labels 1..N.",
+      "id": "docs_binary_segmentation_pipeline_two_stage_approach",
+      "community": 1,
+      "norm_label": "two-stage approach (binary segmentation + watershed)"
+    },
+    {
+      "label": "Watershed Post-Processing",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline_watershed_post_processing",
+      "community": 1,
+      "norm_label": "watershed post-processing"
+    },
+    {
+      "label": "Distance Transform (cv2.DIST_L2)",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline_distance_transform",
+      "community": 1,
+      "norm_label": "distance transform (cv2.dist_l2)"
+    },
+    {
+      "label": "Marker Generation",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Threshold at 40% of max distance then connected components gives one seed per leaf; lower to 25% for heavier overlap.",
+      "id": "docs_binary_segmentation_pipeline_marker_generation",
+      "community": 1,
+      "norm_label": "marker generation"
+    },
+    {
+      "label": "Watershed Algorithm",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline_watershed_algorithm",
+      "community": 1,
+      "norm_label": "watershed algorithm"
+    },
+    {
+      "label": "Mixed Precision Training (AMP)",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Float16 softmax+CrossEntropy can overflow to NaN, so the loop checks gradients before stepping and skips problematic batches.",
+      "id": "docs_binary_segmentation_pipeline_amp",
+      "community": 1,
+      "norm_label": "mixed precision training (amp)"
+    },
+    {
+      "label": "Gradient Health Checks (NaN/Inf skipping)",
+      "file_type": "rationale",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline_gradient_health_checks",
+      "community": 1,
+      "norm_label": "gradient health checks (nan/inf skipping)"
+    },
+    {
+      "label": "Dice-Based Early Stopping & Model Selection",
+      "file_type": "rationale",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "IoU is the final metric of interest but Dice is more stable for small foreground regions during training; best_dice initialized to -1.0 so epoch 1 always saves.",
+      "id": "docs_binary_segmentation_pipeline_early_stopping",
+      "community": 6,
+      "norm_label": "dice-based early stopping & model selection"
+    },
+    {
+      "label": "best_binary.pth Checkpoint",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_binary_segmentation_pipeline_best_binary",
+      "community": 6,
+      "norm_label": "best_binary.pth checkpoint"
+    },
+    {
+      "label": "Instance vs Semantic Segmentation",
+      "file_type": "concept",
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Leaf instance IDs are arbitrary per image so U-Net cannot treat them as semantic classes; binary conversion avoids the instance segmentation requirement.",
+      "id": "docs_binary_segmentation_pipeline_instance_semantic",
+      "community": 1,
+      "norm_label": "instance vs semantic segmentation"
+    },
+    {
+      "label": "Issue Train 1 (mIoU 0.0005)",
+      "file_type": "document",
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_issue_train1",
+      "community": 1,
+      "norm_label": "issue train 1 (miou 0.0005)"
+    },
+    {
+      "label": "Edge-Only Speckle Prediction Symptom",
+      "file_type": "concept",
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_issue_train1_edge_only_prediction",
+      "community": 1,
+      "norm_label": "edge-only speckle prediction symptom"
+    },
+    {
+      "label": "Severe Class Imbalance",
+      "file_type": "concept",
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_issue_train1_class_imbalance",
+      "community": 1,
+      "norm_label": "severe class imbalance"
+    },
+    {
+      "label": "Instance vs Semantic Segmentation",
+      "file_type": "concept",
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_issue_train1_instance_semantic",
+      "community": 1,
+      "norm_label": "instance vs semantic segmentation"
+    },
+    {
+      "label": "Severe Underfitting",
+      "file_type": "concept",
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_issue_train1_underfitting",
+      "community": 1,
+      "norm_label": "severe underfitting"
+    },
+    {
+      "label": "Input-Mask Sync / Resize Interpolation Issue",
+      "file_type": "concept",
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_issue_train1_mask_sync_issue",
+      "community": 1,
+      "norm_label": "input-mask sync / resize interpolation issue"
+    },
+    {
+      "label": "Penjelasan Model U-Net Standar (Standard U-Net Deep Dive)",
+      "file_type": "document",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une",
+      "community": 11,
+      "norm_label": "penjelasan model u-net standar (standard u-net deep dive)"
+    },
+    {
+      "label": "Standard U-Net (Ronneberger et al., MICCAI 2015)",
+      "file_type": "paper",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_standard_unet",
+      "community": 11,
+      "norm_label": "standard u-net (ronneberger et al., miccai 2015)"
+    },
+    {
+      "label": "UNet Assembly Class",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Encoder/decoder symmetry with factor = 2 if bilinear else 1 to save memory at the bottleneck when using bilinear upsampling.",
+      "id": "docs_penjelasan_model_une_unet",
+      "community": 6,
+      "norm_label": "unet assembly class"
+    },
+    {
+      "label": "DoubleConv",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Two conv(3x3)+BN+ReLU blocks; bias=False because BatchNorm already provides the shift; first conv expands representation, second refines non-linearly.",
+      "id": "docs_penjelasan_model_une_doubleconv",
+      "community": 6,
+      "norm_label": "doubleconv"
+    },
+    {
+      "label": "Down (Encoder Block)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_down",
+      "community": 6,
+      "norm_label": "down (encoder block)"
+    },
+    {
+      "label": "Up (Decoder Block)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Padding-aligned concat with skip features; bilinear mode uses 1x1 conv to reduce channels, transposed mode learns the upsampling kernel.",
+      "id": "docs_penjelasan_model_une_up",
+      "community": 6,
+      "norm_label": "up (decoder block)"
+    },
+    {
+      "label": "OutConv",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "1x1 convolution maps channels to n_classes without changing resolution; no activation since loss functions handle softmax internally.",
+      "id": "docs_penjelasan_model_une_outconv",
+      "community": 6,
+      "norm_label": "outconv"
+    },
+    {
+      "label": "Skip Connections",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Connect encoder features to decoder at the same resolution to preserve spatial detail lost during downsampling.",
+      "id": "docs_penjelasan_model_une_skip_connections",
+      "community": 6,
+      "norm_label": "skip connections"
+    },
+    {
+      "label": "Bilinear vs Transposed Conv Upsampling",
+      "file_type": "rationale",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Bilinear is deterministic and parameter-light but not learned; transposed conv learns upsampling but can produce checkerboard artifacts.",
+      "id": "docs_penjelasan_model_une_bilinear_vs_transposed",
+      "community": 6,
+      "norm_label": "bilinear vs transposed conv upsampling"
+    },
+    {
+      "label": "Gradient Checkpointing (use_checkpointing)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Trade-off: ~20-30% more compute but ~40-50% less GPU memory by recomputing forward activations during backward.",
+      "id": "docs_penjelasan_model_une_gradient_checkpointing",
+      "community": 6,
+      "norm_label": "gradient checkpointing (use_checkpointing)"
+    },
+    {
+      "label": "Dice Loss / dice_coeff",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Directly optimizes overlap so it is robust to class imbalance, but gradients are small when overlap is small early in training.",
+      "id": "docs_penjelasan_model_une_dice_loss",
+      "community": 6,
+      "norm_label": "dice loss / dice_coeff"
+    },
+    {
+      "label": "Combined Loss (Weighted BCE + Dice)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Best of both worlds: BCE stable per-pixel signal, Dice handles imbalance; class weights are inverse-frequency clamped to [0.3, 3.0].",
+      "id": "docs_penjelasan_model_une_combined_loss",
+      "community": 6,
+      "norm_label": "combined loss (weighted bce + dice)"
+    },
+    {
+      "label": "Mixed Precision Training (AMP)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "FP16 forward/activations cut memory ~50% and boost throughput ~1.5-2x via Tensor Cores; GradScaler provides numerical stability.",
+      "id": "docs_penjelasan_model_une_amp",
+      "community": 6,
+      "norm_label": "mixed precision training (amp)"
+    },
+    {
+      "label": "BasicDataset",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_basicdataset",
+      "community": 1,
+      "norm_label": "basicdataset"
+    },
+    {
+      "label": "BinaryLeafDataset",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Wrapper converting multi-class masks (0-27) to binary (0=bg, 1=leaf) via (mask > 0).astype(int64); BICUBIC image resize, NEAREST mask resize.",
+      "id": "docs_penjelasan_model_une_binaryleafdataset",
+      "community": 1,
+      "norm_label": "binaryleafdataset"
+    },
+    {
+      "label": "Binary Metrics (IoU & Dice)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Dice = 2*IoU/(1+IoU) so Dice is always >= IoU; IoU is the final metric of interest.",
+      "id": "docs_penjelasan_model_une_binary_metrics",
+      "community": 6,
+      "norm_label": "binary metrics (iou & dice)"
+    },
+    {
+      "label": "RMSprop + ReduceLROnPlateau Config",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "RMSprop lr=1e-5 momentum=0.999 weight_decay=1e-8 matches original U-Net paper; low LR for transfer-learning context; plateau scheduler drops LR when Dice plateaus.",
+      "id": "docs_penjelasan_model_une_rmsprop",
+      "community": 6,
+      "norm_label": "rmsprop + reducelronplateau config"
+    },
+    {
+      "label": "Attention Gate",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_attention_gate",
+      "community": 11,
+      "norm_label": "attention gate"
+    },
+    {
+      "label": "Attention U-Net (Oktay et al., 2018)",
+      "file_type": "paper",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_attention_unet",
+      "community": 11,
+      "norm_label": "attention u-net (oktay et al., 2018)"
+    },
+    {
+      "label": "U-Net++ (Zhou et al., 2018)",
+      "file_type": "paper",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_unetpp",
+      "community": 11,
+      "norm_label": "u-net++ (zhou et al., 2018)"
+    },
+    {
+      "label": "Enhanced U-Net",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Upgrade path from standard U-Net: add Attention Gates in Up blocks, residual DoubleConv, deep supervision, dropout.",
+      "id": "docs_penjelasan_model_une_enhanced_unet",
+      "community": 11,
+      "norm_label": "enhanced u-net"
+    },
+    {
+      "label": "milesial/Pytorch-UNet Reference",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_milesial_pytorch_unet",
+      "community": 11,
+      "norm_label": "milesial/pytorch-unet reference"
+    },
+    {
+      "label": "Training Results (Dice 0.9615, IoU 0.9261)",
+      "file_type": "concept",
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_penjelasan_model_une_training_results",
+      "community": 6,
+      "norm_label": "training results (dice 0.9615, iou 0.9261)"
+    },
+    {
+      "label": "Eksperimental Model U-Net Enhanced (empty)",
+      "file_type": "document",
+      "source_file": "docs/eksperimental_model_unet_enhanes.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "docs_eksperimental_model_unet_enhanes",
+      "community": 11,
+      "norm_label": "eksperimental model u-net enhanced (empty)"
     }
   ],
   "links": [
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_init",
+      "target": "enhanced_u_net_enhancedunet_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_init",
+      "target": "enhanced_u_net_enhancedunet_model_enhancedunet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model",
+      "target": "enhanced_u_net_enhancedunet_model_deep_supervision_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model",
+      "target": "enhanced_u_net_enhancedunet_model_enhancedunet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model",
+      "target": "enhanced_u_net_enhancedunet_parts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_rationale_1",
+      "target": "enhanced_u_net_enhancedunet_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet",
+      "target": "enhanced_u_net_enhancedunet_model_enhancedunet_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "confidence": "INFERRED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "context": "argument",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet_init",
+      "target": "enhanced_u_net_enhancedunet_model_enhancedunet",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet",
+      "target": "enhanced_u_net_enhancedunet_model_enhancedunet_use_checkpointing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet_init",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet_init",
+      "target": "enhanced_u_net_enhancedunet_parts_down"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet_init",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_enhancedunet_init",
+      "target": "enhanced_u_net_enhancedunet_parts_up"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_rationale_73",
+      "target": "enhanced_u_net_enhancedunet_model_enhancedunet_use_checkpointing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_model.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_model_rationale_86",
+      "target": "enhanced_u_net_enhancedunet_model_deep_supervision_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts",
+      "target": "enhanced_u_net_enhancedunet_parts_attentiongate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts",
+      "target": "enhanced_u_net_enhancedunet_parts_down",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts",
+      "target": "enhanced_u_net_enhancedunet_parts_up",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_rationale_1",
+      "target": "enhanced_u_net_enhancedunet_parts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_down_init",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_rationale_20",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_up_init",
+      "target": "enhanced_u_net_enhancedunet_parts_doubleconv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_doubleconv_init",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_down",
+      "target": "enhanced_u_net_enhancedunet_parts_down_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_down",
+      "target": "enhanced_u_net_enhancedunet_parts_down_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_rationale_53",
+      "target": "enhanced_u_net_enhancedunet_parts_down",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_down_init",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_attentiongate",
+      "target": "enhanced_u_net_enhancedunet_parts_attentiongate_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_attentiongate",
+      "target": "enhanced_u_net_enhancedunet_parts_attentiongate_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_rationale_67",
+      "target": "enhanced_u_net_enhancedunet_parts_attentiongate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_up_init",
+      "target": "enhanced_u_net_enhancedunet_parts_attentiongate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_attentiongate_init",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_rationale_109",
+      "target": "enhanced_u_net_enhancedunet_parts_up",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_up",
+      "target": "enhanced_u_net_enhancedunet_parts_up_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_up",
+      "target": "enhanced_u_net_enhancedunet_parts_up_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_up_init",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L170",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_enhancedunet_parts_outconv",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "confidence": "INFERRED",
+      "source_file": "Enhanced-U-Net/enhancedunet_parts.py",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_origin": "ast",
+      "context": "argument",
+      "source": "enhanced_u_net_enhancedunet_parts_outconv_init",
+      "target": "enhanced_u_net_enhancedunet_parts_outconv",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet",
+      "target": "enhanced_u_net_test_enhancedunet_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet",
+      "target": "enhanced_u_net_test_enhancedunet_combined_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet",
+      "target": "enhanced_u_net_test_enhancedunet_count_params",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet",
+      "target": "unet_unet_model_unet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet_rationale_1",
+      "target": "enhanced_u_net_test_enhancedunet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet_rationale_44",
+      "target": "enhanced_u_net_test_enhancedunet_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "Enhanced-U-Net/test_enhancedunet.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "enhanced_u_net_test_enhancedunet_rationale_191",
+      "target": "enhanced_u_net_test_enhancedunet_combined_loss",
+      "confidence_score": 1.0
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -1327,6 +3088,18 @@
       "source": "data_download_dataset_organize_dataset",
       "target": "path",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "train_2class.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset_init",
+      "target": "path"
     },
     {
       "relation": "calls",
@@ -1981,6 +3754,327 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "train_2class_binary_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "train_2class_binaryleafdataset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "train_2class_combined_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L332",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "train_2class_get_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "train_2class_train_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "unet_unet_model_unet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "utils_dice_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class",
+      "target": "utils_dice_score_dice_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_rationale_1",
+      "target": "train_2class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset",
+      "target": "train_2class_binaryleafdataset_getitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset",
+      "target": "train_2class_binaryleafdataset_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset",
+      "target": "train_2class_binaryleafdataset_len",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset",
+      "target": "train_2class_binaryleafdataset_preprocess_img",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset",
+      "target": "train_2class_binaryleafdataset_preprocess_mask",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset",
+      "target": "train_2class_py_dataset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_rationale_52",
+      "target": "train_2class_binaryleafdataset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_train_model",
+      "target": "train_2class_binaryleafdataset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset_getitem",
+      "target": "train_2class_binaryleafdataset_preprocess_img",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binaryleafdataset_getitem",
+      "target": "train_2class_binaryleafdataset_preprocess_mask",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_combined_loss",
+      "target": "train_2class_py_tensor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_combined_loss",
+      "target": "utils_dice_score_dice_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_rationale_109",
+      "target": "train_2class_combined_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L246",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_train_model",
+      "target": "train_2class_combined_loss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_binary_metrics",
+      "target": "train_2class_py_tensor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_rationale_140",
+      "target": "train_2class_binary_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L286",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_train_model",
+      "target": "train_2class_binary_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_train_model",
+      "target": "device",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "train_2class.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "train_2class_train_model",
+      "target": "module",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
@@ -2438,17 +4532,6 @@
       "confidence_score": 0.5
     },
     {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "utils/data_loading.py",
-      "source_location": "L41",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "utils_data_loading_basicdataset",
-      "target": "dataset",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "utils/data_loading.py",
@@ -2490,6 +4573,17 @@
       "_origin": "ast",
       "source": "utils_data_loading_basicdataset",
       "target": "utils_data_loading_basicdataset_preprocess",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/data_loading.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "utils_data_loading_basicdataset",
+      "target": "utils_data_loading_py_dataset",
       "confidence_score": 1.0
     },
     {
@@ -2568,7 +4662,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "utils_dice_score_dice_coeff",
-      "target": "tensor",
+      "target": "utils_dice_score_py_tensor",
       "confidence_score": 1.0
     },
     {
@@ -2592,7 +4686,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "utils_dice_score_dice_loss",
-      "target": "tensor",
+      "target": "utils_dice_score_py_tensor",
       "confidence_score": 1.0
     },
     {
@@ -2604,7 +4698,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "utils_dice_score_multiclass_dice_coeff",
-      "target": "tensor",
+      "target": "utils_dice_score_py_tensor",
       "confidence_score": 1.0
     },
     {
@@ -2680,6 +4774,56 @@
     },
     {
       "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/training-guide.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_training_guide_document",
+      "target": "readme_unet_architecture"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_unet_paper",
+      "target": "readme_unet_architecture"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_carvana_dataset",
+      "target": "docs_class_determination_plantphenotypingdataset"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/perubahan_training.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_perubahan_wandboffline",
+      "target": "readme_weights_biases"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_mixed_precision",
+      "target": "docs_training_guide_document"
+    },
+    {
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/class-determination.md",
@@ -2739,6 +4883,16 @@
       "target": "docs_class_determination_uniquemaskvalues"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/class-determination.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_class_determination_pixelvalue27",
+      "target": "docs_class_determination_autoclassdetection"
+    },
+    {
       "relation": "references",
       "confidence": "INFERRED",
       "confidence_score": 0.95,
@@ -2747,6 +4901,36 @@
       "weight": 1.0,
       "source": "docs_perubahan_training_document",
       "target": "docs_class_determination_autoclassdetection"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/training-guide.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_training_guide_document",
+      "target": "docs_class_determination_autoclassdetection"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/class-determination.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_class_determination_uniquemaskvalues",
+      "target": "docs_class_determination_basicdataset"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/class-determination.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_class_determination_maskremapping",
+      "target": "docs_class_determination_basicdataset"
     },
     {
       "relation": "references",
@@ -2762,11 +4946,41 @@
       "relation": "references",
       "confidence": "INFERRED",
       "confidence_score": 0.95,
+      "source_file": "docs/training-guide.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_training_guide_document",
+      "target": "docs_class_determination_pixelvalue27"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
       "source_file": "docs/perubahan_training.md",
       "source_location": null,
       "weight": 1.0,
       "source": "docs_perubahan_training_document",
       "target": "docs_class_determination_plantphenotypingdataset"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/training-guide.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_training_guide_document",
+      "target": "docs_class_determination_plantphenotypingdataset"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/training-guide.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_training_guide_document",
+      "target": "docs_class_determination_basicdataset"
     },
     {
       "relation": "references",
@@ -2820,46 +5034,6 @@
     },
     {
       "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "docs/training-guide.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "docs_training_guide_document",
-      "target": "docs_class_determination_autoclassdetection"
-    },
-    {
-      "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "docs/training-guide.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "docs_training_guide_document",
-      "target": "docs_class_determination_basicdataset"
-    },
-    {
-      "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "docs/training-guide.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "docs_training_guide_document",
-      "target": "docs_class_determination_pixelvalue27"
-    },
-    {
-      "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "docs/training-guide.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "docs_training_guide_document",
-      "target": "docs_class_determination_plantphenotypingdataset"
-    },
-    {
-      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/training-guide.md",
@@ -2880,102 +5054,636 @@
     },
     {
       "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "docs/training-guide.md",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "docs_training_guide_document",
-      "target": "readme_unet_architecture"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_mixed_precision",
-      "target": "docs_training_guide_document"
+      "source": "docs_binary_segmentation_pipeline",
+      "target": "docs_binary_segmentation_pipeline_amp"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "README.md",
+      "source_file": "docs/binary-segmentation-pipeline.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "readme_unet_paper",
-      "target": "readme_unet_architecture"
+      "source": "docs_binary_segmentation_pipeline",
+      "target": "docs_binary_segmentation_pipeline_binaryleafdataset"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline",
+      "target": "docs_binary_segmentation_pipeline_combined_loss"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline",
+      "target": "docs_binary_segmentation_pipeline_two_stage_approach"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline",
+      "target": "docs_binary_segmentation_pipeline_unet"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline",
+      "target": "docs_binary_segmentation_pipeline_watershed_post_processing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_two_stage_approach",
+      "target": "docs_binary_segmentation_pipeline_unet"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_unet",
+      "target": "docs_binary_segmentation_pipeline_amp"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_unet",
+      "target": "docs_binary_segmentation_pipeline_best_binary"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_unet",
+      "target": "docs_penjelasan_model_une_standard_unet"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_binaryleafdataset",
+      "target": "docs_binary_segmentation_pipeline_instance_semantic"
     },
     {
       "relation": "semantically_similar_to",
       "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "README.md",
+      "confidence_score": 0.95,
+      "source_file": "docs/binary-segmentation-pipeline.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "readme_carvana_dataset",
-      "target": "docs_class_determination_plantphenotypingdataset"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/perubahan_training.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "docs_perubahan_wandboffline",
-      "target": "readme_weights_biases"
+      "source": "docs_binary_segmentation_pipeline_binaryleafdataset",
+      "target": "docs_penjelasan_model_une_binaryleafdataset"
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/class-determination.md",
+      "source_file": "docs/binary-segmentation-pipeline.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "docs_class_determination_pixelvalue27",
-      "target": "docs_class_determination_autoclassdetection"
+      "source": "docs_binary_segmentation_pipeline_background_collapse",
+      "target": "docs_binary_segmentation_pipeline_combined_loss"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_combined_loss",
+      "target": "docs_penjelasan_model_une_combined_loss"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_inverse_frequency_weighting",
+      "target": "docs_binary_segmentation_pipeline_combined_loss"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1_class_imbalance",
+      "target": "docs_binary_segmentation_pipeline_background_collapse"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_instance_semantic",
+      "target": "docs_binary_segmentation_pipeline_two_stage_approach"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_two_stage_approach",
+      "target": "docs_binary_segmentation_pipeline_watershed_post_processing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_watershed_post_processing",
+      "target": "docs_binary_segmentation_pipeline_distance_transform"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_watershed_post_processing",
+      "target": "docs_binary_segmentation_pipeline_marker_generation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_watershed_post_processing",
+      "target": "docs_binary_segmentation_pipeline_watershed_algorithm"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_distance_transform",
+      "target": "docs_binary_segmentation_pipeline_marker_generation"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_marker_generation",
+      "target": "docs_binary_segmentation_pipeline_watershed_algorithm"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_amp",
+      "target": "docs_penjelasan_model_une_amp"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_gradient_health_checks",
+      "target": "docs_binary_segmentation_pipeline_amp"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_early_stopping",
+      "target": "docs_binary_segmentation_pipeline_best_binary"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/binary-segmentation-pipeline.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_binary_segmentation_pipeline_early_stopping",
+      "target": "docs_penjelasan_model_une_training_results"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1_instance_semantic",
+      "target": "docs_binary_segmentation_pipeline_instance_semantic"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1",
+      "target": "docs_issue_train1_class_imbalance"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1",
+      "target": "docs_issue_train1_edge_only_prediction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1",
+      "target": "docs_issue_train1_instance_semantic"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1",
+      "target": "docs_issue_train1_mask_sync_issue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1",
+      "target": "docs_issue_train1_underfitting"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1",
+      "target": "docs_penjelasan_model_une_standard_unet"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1_class_imbalance",
+      "target": "docs_issue_train1_edge_only_prediction"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1_mask_sync_issue",
+      "target": "docs_issue_train1_edge_only_prediction"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/issue_train1.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_issue_train1_underfitting",
+      "target": "docs_issue_train1_edge_only_prediction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une",
+      "target": "docs_penjelasan_model_une_standard_unet"
     },
     {
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/class-determination.md",
+      "source_file": "docs/penjelasan_model_une.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "docs_class_determination_uniquemaskvalues",
-      "target": "docs_class_determination_basicdataset"
+      "source": "docs_penjelasan_model_une_enhanced_unet",
+      "target": "docs_penjelasan_model_une_standard_unet"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_standard_unet",
+      "target": "docs_penjelasan_model_une_attention_unet"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_standard_unet",
+      "target": "docs_penjelasan_model_une_milesial_pytorch_unet"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_standard_unet",
+      "target": "docs_penjelasan_model_une_unet"
     },
     {
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/class-determination.md",
+      "source_file": "docs/penjelasan_model_une.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "docs_class_determination_maskremapping",
-      "target": "docs_class_determination_basicdataset"
+      "source": "docs_penjelasan_model_une_unetpp",
+      "target": "docs_penjelasan_model_une_standard_unet"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_amp",
+      "target": "docs_penjelasan_model_une_unet"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_gradient_checkpointing",
+      "target": "docs_penjelasan_model_une_unet"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_rmsprop",
+      "target": "docs_penjelasan_model_une_unet"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_unet",
+      "target": "docs_penjelasan_model_une_doubleconv"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_unet",
+      "target": "docs_penjelasan_model_une_down"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_unet",
+      "target": "docs_penjelasan_model_une_outconv"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_unet",
+      "target": "docs_penjelasan_model_une_skip_connections"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_unet",
+      "target": "docs_penjelasan_model_une_up"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_down",
+      "target": "docs_penjelasan_model_une_doubleconv"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_up",
+      "target": "docs_penjelasan_model_une_doubleconv"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_bilinear_vs_transposed",
+      "target": "docs_penjelasan_model_une_up"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_skip_connections",
+      "target": "docs_penjelasan_model_une_up"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_binary_metrics",
+      "target": "docs_penjelasan_model_une_dice_loss"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_combined_loss",
+      "target": "docs_penjelasan_model_une_dice_loss"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_amp",
+      "target": "docs_penjelasan_model_une_combined_loss"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_basicdataset",
+      "target": "docs_penjelasan_model_une_binaryleafdataset"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_training_results",
+      "target": "docs_penjelasan_model_une_binary_metrics"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_attention_gate",
+      "target": "docs_penjelasan_model_une_attention_unet"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_enhanced_unet",
+      "target": "docs_penjelasan_model_une_attention_gate"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/penjelasan_model_une.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "docs_penjelasan_model_une_enhanced_unet",
+      "target": "docs_eksperimental_model_unet_enhanes"
     }
   ],
   "hyperedges": [
-    {
-      "id": "training_documentation_ecosystem",
-      "label": "Training Documentation for Plant Phenotyping Dataset",
-      "nodes": [
-        "docs_class_determination_document",
-        "docs_perubahan_training_document",
-        "docs_training_guide_document",
-        "docs_class_determination_plantphenotypingdataset",
-        "docs_class_determination_autoclassdetection",
-        "docs_class_determination_pixelvalue27"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "docs/training-guide.md"
-    },
     {
       "id": "automated_class_detection_flow",
       "label": "Automated Class Detection Data Flow",
@@ -3003,7 +5711,67 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/perubahan_training.md"
+    },
+    {
+      "id": "training_documentation_ecosystem",
+      "label": "Training Documentation for Plant Phenotyping Dataset",
+      "nodes": [
+        "docs_class_determination_document",
+        "docs_perubahan_training_document",
+        "docs_training_guide_document",
+        "docs_class_determination_plantphenotypingdataset",
+        "docs_class_determination_autoclassdetection",
+        "docs_class_determination_pixelvalue27"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/training-guide.md"
+    },
+    {
+      "id": "unet_building_blocks",
+      "label": "Standard U-Net Building Blocks",
+      "nodes": [
+        "docs_penjelasan_model_une_unet",
+        "docs_penjelasan_model_une_doubleconv",
+        "docs_penjelasan_model_une_down",
+        "docs_penjelasan_model_une_up",
+        "docs_penjelasan_model_une_outconv"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/penjelasan_model_une.md"
+    },
+    {
+      "id": "binary_segmentation_pipeline_flow",
+      "label": "Binary Segmentation + Watershed Pipeline Flow",
+      "nodes": [
+        "docs_binary_segmentation_pipeline_binaryleafdataset",
+        "docs_binary_segmentation_pipeline_unet",
+        "docs_binary_segmentation_pipeline_combined_loss",
+        "docs_binary_segmentation_pipeline_watershed_post_processing"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/binary-segmentation-pipeline.md"
+    },
+    {
+      "id": "weighted_bce_dice_loss_design",
+      "label": "Weighted BCE + Dice Loss Design",
+      "nodes": [
+        "docs_binary_segmentation_pipeline_background_collapse",
+        "docs_binary_segmentation_pipeline_inverse_frequency_weighting",
+        "docs_binary_segmentation_pipeline_combined_loss",
+        "docs_penjelasan_model_une_combined_loss",
+        "docs_penjelasan_model_une_dice_loss"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/binary-segmentation-pipeline.md"
     }
   ],
-  "built_at_commit": "998f4dde9bcd231945feca85dea3db92a8cc466b"
+  "built_at_commit": "d7688f899f8cc3b8b1c909cc02c4bd5228845903"
 }
