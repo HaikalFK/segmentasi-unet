@@ -8,57 +8,8 @@
 
 U-Net adalah arsitektur **encoder-decoder** dengan **skip connections** yang dirancang khusus untuk segmentasi gambar biomedis. Arsitekturnya berbentuk huruf "U":
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        ARSITEKTUR U-NET                             │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│   INPUT (3, H, W)                                                   │
-│      │                                                              │
-│      ▼                                                              │
-│   ┌─────────┐                                                       │
-│   │  Inc    │  ← DoubleConv(3 → 64)        ← ENTRY BLOCK           │
-│   └────┬────┘                                                       │
-│        │ x1 (64, H, W)  ──────────────────────┐                    │
-│        ▼                                       │                    │
-│   ┌─────────┐                                 │                    │
-│   │ Down1   │  ← MaxPool + DoubleConv(64→128)  │                    │
-│   └────┬────┘                                 │                    │
-│        │ x2 (128, H/2, W/2) ────────────────┐  │                    │
-│        ▼                                     │  │                    │
-│   ┌─────────┐                                │  │                    │
-│   │ Down2   │  ← MaxPool + DoubleConv(128→256)  │                    │
-│   └────┬────┘                                │  │                    │
-│        │ x3 (256, H/4, W/4) ────────────┐    │  │                    │
-│        ▼                                 │    │  │                    │
-│   ┌─────────┐                            │    │  │                    │
-│   │ Down3   │  ← MaxPool + DoubleConv(256→512)  │  │                    │
-│   └────┬────┘                            │    │  │                    │
-│        │ x4 (512, H/8, W/8) ────────┐   │    │  │                    │
-│        ▼                              │   │    │  │                    │
-│   ┌─────────┐                         │   │    │  │                    │
-│   │ Down4   │  ← MaxPool + DoubleConv(512→1024)   │  │                    │
-│   └────┬────┘                         │   │    │  │                    │
-│        │ x5 (1024, H/16, W/16)        │   │    │  │                    │
-│        │                               │   │    │  │                    │
-│        ▼                               │   │    │  │                    │
-│   ┌─────────┐ ◄─── BOTTLENECK ────────┘   │    │  │                    │
-│   │  Up1    │  ← UpSample + Concat(x4)     │    │                    │
-│   └────┬────┘           │                  │    │                    │
-│        │ x (512, H/8, W/8)                │    │                    │
-│        │       │                            │    │                    │
-│        ▼       ▼                            ▼    ▼                    │
-│   ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐                │
-│   │  Up2    │  │  Up3    │  │  Up4    │  │ OutConv │                │
-│   └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘                │
-│        │            │            │            │                      │
-│        ▼            ▼            ▼            ▼                      │
-│   (256)        (128)         (64)        (n_classes)                │
-│                                                                     │
-│   OUTPUT: (n_classes, H, W)                                         │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
+![alt text](image-3.png)
+
 
 **Karakteristik Kunci:**
 - **Encoder (Contracting Path)**: Ekstraksi fitur hierarkis via downsampling

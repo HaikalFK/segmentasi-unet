@@ -46,7 +46,15 @@
       "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _check30.py)",
       "Bash(rm -f _fix_nb_branch.py _check30.py)",
       "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _diag_test.py)",
-      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _scenarioA_test.py)"
+      "Bash(PYTHONIOENCODING=utf-8 \".env/Scripts/python.exe\" _scenarioA_test.py)",
+      "Read(//usr/**)",
+      "Bash(py -0)",
+      "Bash(/c/ProgramData/chocolatey/bin/python3.12 -m pip install graphifyy -q)",
+      "Bash(/c/ProgramData/chocolatey/bin/python3.12 *)",
+      "Bash(py *)",
+      "mcp__ide__getDiagnostics",
+      "Bash(python.exe -c ' *)",
+      "Bash(python.exe -)"
     ]
   }
 }
