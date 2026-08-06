@@ -1,8 +1,8 @@
 {
   ".claude/settings.local.json": {
-    "mtime": 1785387355.6649365,
-    "ast_hash": "1a9d07fbf1f7a1280f0337620aa9cfc6",
-    "semantic_hash": "1a9d07fbf1f7a1280f0337620aa9cfc6"
+    "mtime": 1785846100.2114139,
+    "ast_hash": "db6b221a3c0bbe0d1c3e7104cd640c68",
+    "semantic_hash": "db6b221a3c0bbe0d1c3e7104cd640c68"
   },
   "evaluate.py": {
     "mtime": 1785394317.4058259,
@@ -67,32 +67,32 @@
   ".github/workflows/main.yml": {
     "mtime": 1785239041.5000188,
     "ast_hash": "a9a2ba827c95a3c07e2f798845d59de8",
-    "semantic_hash": "a9a2ba827c95a3c07e2f798845d59de8"
+    "semantic_hash": ""
   },
   "README.md": {
     "mtime": 1785239041.5020182,
     "ast_hash": "5304e8ff05fdc0340ec0cb61e1d47e8f",
-    "semantic_hash": "5304e8ff05fdc0340ec0cb61e1d47e8f"
+    "semantic_hash": ""
   },
   "requirements.txt": {
     "mtime": 1785321618.541471,
     "ast_hash": "1938ee770ebdeec81b2c27226552e4d6",
-    "semantic_hash": "1938ee770ebdeec81b2c27226552e4d6"
+    "semantic_hash": ""
   },
   "Enhanced-U-Net/__init__.py": {
-    "mtime": 1785387127.0657883,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
-    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    "mtime": 1785501605.7963803,
+    "ast_hash": "c42b73009c93aec2ad5e975d176a2b2a",
+    "semantic_hash": "c42b73009c93aec2ad5e975d176a2b2a"
   },
   "Enhanced-U-Net/enhancedunet_model.py": {
-    "mtime": 1785387020.1341684,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
-    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    "mtime": 1785502029.7903736,
+    "ast_hash": "7c5820b3b8d4a744d780e25a4837d012",
+    "semantic_hash": "7c5820b3b8d4a744d780e25a4837d012"
   },
   "Enhanced-U-Net/enhancedunet_parts.py": {
-    "mtime": 1785387033.1358774,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
-    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    "mtime": 1785502767.695356,
+    "ast_hash": "5748a6b66ce2e642a0d2221819bfb717",
+    "semantic_hash": "5748a6b66ce2e642a0d2221819bfb717"
   },
   "data/download_dataset.py": {
     "mtime": 1785241995.619759,
@@ -102,16 +102,46 @@
   "docs/class-determination.md": {
     "mtime": 1785309316.157218,
     "ast_hash": "e4b7627b0e6706e4354ea205f7fa6bd1",
-    "semantic_hash": "e4b7627b0e6706e4354ea205f7fa6bd1"
+    "semantic_hash": ""
   },
   "docs/perubahan_training.md": {
     "mtime": 1785299499.6633236,
     "ast_hash": "b3c1ffdaa56696252366868eba3b7ce6",
-    "semantic_hash": "b3c1ffdaa56696252366868eba3b7ce6"
+    "semantic_hash": ""
   },
   "docs/training-guide.md": {
     "mtime": 1785299515.4617622,
     "ast_hash": "01170226c1c82b823540f0ca6a76fb65",
-    "semantic_hash": "01170226c1c82b823540f0ca6a76fb65"
+    "semantic_hash": ""
+  },
+  "Enhanced-U-Net/test_enhancedunet.py": {
+    "mtime": 1785502866.5718985,
+    "ast_hash": "2add4da59a87c259dbb0e6ada31708bd",
+    "semantic_hash": "2add4da59a87c259dbb0e6ada31708bd"
+  },
+  "experiments/compare_losses.py": {
+    "mtime": 1785761647.7118962,
+    "ast_hash": "5b3350a7401974ab4c3852b28657e124",
+    "semantic_hash": "5b3350a7401974ab4c3852b28657e124"
+  },
+  "train_2class.py": {
+    "mtime": 1785414054.8159323,
+    "ast_hash": "4d4229590bd34847c9777ae2d471f9fd",
+    "semantic_hash": "4d4229590bd34847c9777ae2d471f9fd"
+  },
+  "utils/checkpoint.py": {
+    "mtime": 1785738351.5801034,
+    "ast_hash": "dd57724860d5cb183cdbb840531a4ece",
+    "semantic_hash": "dd57724860d5cb183cdbb840531a4ece"
+  },
+  "utils/loss_functions.py": {
+    "mtime": 1785738266.2408586,
+    "ast_hash": "a703b66a91f1f1cb2736af60742c66f4",
+    "semantic_hash": "a703b66a91f1f1cb2736af60742c66f4"
+  },
+  "utils/wandb_tracker.py": {
+    "mtime": 1785744540.3602169,
+    "ast_hash": "4e5b2b4ebb17e1270f683974721b2e89",
+    "semantic_hash": "4e5b2b4ebb17e1270f683974721b2e89"
   }
 }
