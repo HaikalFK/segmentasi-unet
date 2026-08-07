@@ -3,11 +3,13 @@ data dan kerangka dasarnya mendukung tujuan, tapi ada perbaikan penting.
 Apa yang ditemukan
 
 • Mask Anda memakai warna berbeda per daun; sampling 20 mask menunjukkan ~13 warna yang berulang di banyak gambar (background=0,0,0) — bagus untuk diproses.
+
 • Saat ini train.py membangun UNet multiclass (n_classes = jumlah warna) dan pakai CrossEntropy + Dice — itu menangani pemisahan per-pixel antar-warna.
 
 Risiko / keterbatasan
 
 • Jika warna bukan mapping konsisten ke “jenis” tetapi hanya palette per-gambar, model multiclass global bisa memaksakan label artefak (kelas tetap untuk warna), bukan instance-agnostic grouping.
+
 • Untuk daun yang saling tumpang tindih, idealnya butuh instance segmentation (memisahkan objek individual), bukan hanya semantic multiclass.
 
 Rekomendasi prioritas (dapat diimplementasikan cepat)
