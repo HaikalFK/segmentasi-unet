@@ -1,0 +1,10 @@
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\EnhanceUnetTraining.html
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\Unet_Binary_Leaf_Segmentation.html
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\Rancangan_Implementasi_Stage_2_Watershed.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\amodal.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\dataset.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\doc_model_unet.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\ekperiment_loss.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\jumlahdaun.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\metrik_kuantitatif.md
+C:\Users\Musa\OneDrive - Universitas Teknologi Yogyakarta (1)\segementasi\segmentasi-unet\docs\ouput_log_train.md
