@@ -35,7 +35,7 @@ class Stage1Predictor:
                 mode="bilinear",
                 align_corners=False,
             )
-            prob = torch.sigmoid(output).squeeze().cpu().numpy()
+            prob = torch.softmax(output, dim=1)[0, 1].cpu().numpy()
 
         return prob.astype(np.float32)
 

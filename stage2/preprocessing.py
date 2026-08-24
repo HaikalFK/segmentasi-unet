@@ -27,10 +27,12 @@ class Stage2Preprocessor:
             img_np /= 255.0
         return img_np
 
-    def preprocess_mask(self, mask):
+    def preprocess_mask(self, mask, target_size=None):
         """Load instance mask without binarization (for evaluation).
 
         Returns original pixel values so instance identities are preserved.
+        Pass target_size to match a prediction's (W, H); defaults to
+        self.target_size.
         """
         if isinstance(mask, Image.Image):
             mask = mask.convert("L")
@@ -38,7 +40,7 @@ class Stage2Preprocessor:
             mask = Image.fromarray(mask).convert("L")
 
         w, h = mask.size
-        new_w, new_h = self.target_size
+        new_w, new_h = target_size if target_size else self.target_size
         mask = mask.resize((new_w, new_h), Image.NEAREST)
 
         return np.asarray(mask, dtype=np.int64)

@@ -55,7 +55,11 @@
       "mcp__ide__getDiagnostics",
       "Bash(python.exe -c ' *)",
       "Bash(python.exe -)",
-      "Bash(C:\\\\Users\\\\Musa\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe *)"
+      "Bash(C:\\\\Users\\\\Musa\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe *)",
+      "Bash(.env/Scripts/python.exe -c \"import sys; print\\(sys.version\\)\")",
+      "Bash(.env/Scripts/python.exe -c ' *)",
+      "Bash(.env/Scripts/python.exe *)",
+      "Bash(attrib \"predictions\\\\\\\\stage2\")"
     ]
   }
 }
