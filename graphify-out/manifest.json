@@ -1,9 +1,4 @@
 {
-  ".claude/settings.local.json": {
-    "mtime": 1785846100.2114139,
-    "ast_hash": "db6b221a3c0bbe0d1c3e7104cd640c68",
-    "semantic_hash": "db6b221a3c0bbe0d1c3e7104cd640c68"
-  },
   "evaluate.py": {
     "mtime": 1785394317.4058259,
     "ast_hash": "68caf1b18807ada3f8650ccbe161bce2",
@@ -67,17 +62,17 @@
   ".github/workflows/main.yml": {
     "mtime": 1785239041.5000188,
     "ast_hash": "a9a2ba827c95a3c07e2f798845d59de8",
-    "semantic_hash": ""
+    "semantic_hash": "a9a2ba827c95a3c07e2f798845d59de8"
   },
   "README.md": {
     "mtime": 1785239041.5020182,
     "ast_hash": "5304e8ff05fdc0340ec0cb61e1d47e8f",
-    "semantic_hash": ""
+    "semantic_hash": "5304e8ff05fdc0340ec0cb61e1d47e8f"
   },
   "requirements.txt": {
     "mtime": 1785321618.541471,
     "ast_hash": "1938ee770ebdeec81b2c27226552e4d6",
-    "semantic_hash": ""
+    "semantic_hash": "1938ee770ebdeec81b2c27226552e4d6"
   },
   "Enhanced-U-Net/__init__.py": {
     "mtime": 1785501605.7963803,
@@ -102,17 +97,17 @@
   "docs/class-determination.md": {
     "mtime": 1785309316.157218,
     "ast_hash": "e4b7627b0e6706e4354ea205f7fa6bd1",
-    "semantic_hash": ""
+    "semantic_hash": "e4b7627b0e6706e4354ea205f7fa6bd1"
   },
   "docs/perubahan_training.md": {
     "mtime": 1785299499.6633236,
     "ast_hash": "b3c1ffdaa56696252366868eba3b7ce6",
-    "semantic_hash": ""
+    "semantic_hash": "b3c1ffdaa56696252366868eba3b7ce6"
   },
   "docs/training-guide.md": {
     "mtime": 1785299515.4617622,
     "ast_hash": "01170226c1c82b823540f0ca6a76fb65",
-    "semantic_hash": ""
+    "semantic_hash": "01170226c1c82b823540f0ca6a76fb65"
   },
   "Enhanced-U-Net/test_enhancedunet.py": {
     "mtime": 1785502866.5718985,
@@ -143,5 +138,75 @@
     "mtime": 1785744540.3602169,
     "ast_hash": "4e5b2b4ebb17e1270f683974721b2e89",
     "semantic_hash": "4e5b2b4ebb17e1270f683974721b2e89"
+  },
+  "docs/binary-segmentation-pipeline.md": {
+    "mtime": 1785410669.2545621,
+    "ast_hash": "5e332d2d72a6c947ac11480f8ab727b3",
+    "semantic_hash": "5e332d2d72a6c947ac11480f8ab727b3"
+  },
+  "docs/issue_train1.md": {
+    "mtime": 1785403739.7300074,
+    "ast_hash": "ef4564bf910b701a484c7bfa835d99e8",
+    "semantic_hash": "ef4564bf910b701a484c7bfa835d99e8"
+  },
+  "docs/penjelasan_model_unet.md": {
+    "mtime": 1786016761.0240304,
+    "ast_hash": "159c4d2627903d05bfaf275d3eab00a1",
+    "semantic_hash": "159c4d2627903d05bfaf275d3eab00a1"
+  },
+  "docs/penjelasan_model_unet_enhanes.md": {
+    "mtime": 1786016825.5622478,
+    "ast_hash": "fbbb92cda248c91b6ea2e80c040077d8",
+    "semantic_hash": "fbbb92cda248c91b6ea2e80c040077d8"
+  },
+  "docs/tumpangtinding.md": {
+    "mtime": 1786095204.0355923,
+    "ast_hash": "3f3c9b321760fb91f852c7f78d5aa40c",
+    "semantic_hash": "3f3c9b321760fb91f852c7f78d5aa40c"
+  },
+  "experiments/configs/standard_bce.yaml": {
+    "mtime": 1785761517.4271352,
+    "ast_hash": "1b22198db0a02606176d919083c9978f",
+    "semantic_hash": "1b22198db0a02606176d919083c9978f"
+  },
+  "experiments/configs/weighted_bce_dice.yaml": {
+    "mtime": 1785761517.5104833,
+    "ast_hash": "232637196de5699f01692965429c676f",
+    "semantic_hash": "232637196de5699f01692965429c676f"
+  },
+  "data/ara2012_plant01_frame01_rgb.png": {
+    "mtime": 1785832554.2714982,
+    "ast_hash": "4c0133afa55d690dc03ee4750dcb5146",
+    "semantic_hash": "4c0133afa55d690dc03ee4750dcb5146"
+  },
+  "data/ara2012_plant03_frame04_rgb.png": {
+    "mtime": 1785833959.0667322,
+    "ast_hash": "472e763f28573b35e3c446cb3fa9a85e",
+    "semantic_hash": "472e763f28573b35e3c446cb3fa9a85e"
+  },
+  "docs/image-1.png": {
+    "mtime": 1785763667.125295,
+    "ast_hash": "58562ed38d0ed6c158dd9f21b83794a2",
+    "semantic_hash": "58562ed38d0ed6c158dd9f21b83794a2"
+  },
+  "docs/image-2.png": {
+    "mtime": 1785763678.3056264,
+    "ast_hash": "577117a23c12f6d30b7317a54bc61a8b",
+    "semantic_hash": "577117a23c12f6d30b7317a54bc61a8b"
+  },
+  "docs/image-3.png": {
+    "mtime": 1786016673.302662,
+    "ast_hash": "674a8d87ca9d0fbcd33e9d13baf2dda0",
+    "semantic_hash": "674a8d87ca9d0fbcd33e9d13baf2dda0"
+  },
+  "docs/image-4.png": {
+    "mtime": 1786016824.5589118,
+    "ast_hash": "5f1b71f08e416fa8cd3631a4b69c6a16",
+    "semantic_hash": "5f1b71f08e416fa8cd3631a4b69c6a16"
+  },
+  "docs/image.png": {
+    "mtime": 1785763651.7063718,
+    "ast_hash": "38eada0a8a201cf0ae3fcd9eba3ef6a1",
+    "semantic_hash": "38eada0a8a201cf0ae3fcd9eba3ef6a1"
   }
 }
